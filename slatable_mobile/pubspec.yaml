@@ -1,0 +1,39 @@
+name: slatable_mobile
+description: Self tapes simplified
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # UI
+  cupertino_icons: ^1.0.2
+  top_snackbar_flutter: ^1.0.0
+  loading_overlay: ^0.3.0
+
+  # video
+  flutter_ffmpeg: ^0.4.0
+
+  # local storage
+  hive: ^2.0.3
+  path_provider: ^2.0.1
+
+  # state management
+  flutter_riverpod: ^0.14.0+1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  uses-material-design: true
+  assets:
+    - assets/icons/
+    - assets/images/
+    - assets/sounds/
+    - assets/animations/
