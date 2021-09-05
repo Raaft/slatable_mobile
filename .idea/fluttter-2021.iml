@@ -8,8 +8,9 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/slatable_mobile/.pub" />
+      <sourceFolder url="file://$MODULE_DIR$/.idea/gen" isTestSource="false" generated="true" />
       <excludeFolder url="file://$MODULE_DIR$/slatable_mobile/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/slatable_mobile/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/slatable_mobile/build" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />

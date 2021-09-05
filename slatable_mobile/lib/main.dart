@@ -5,7 +5,7 @@ import 'package:slatable_mobile/config/app_theme.dart';
 import 'package:slatable_mobile/cubit/mainCubit/cubit.dart';
 import 'package:slatable_mobile/cubit/mainCubit/states.dart';
 
-import 'cubit/mainCubit/bloc_obsirve.dart';
+import 'cubit/bloc_obsirve.dart';
 import 'modules/auth/view/screens/welcomeScreen.dart';
 
 void main() {

@@ -42,7 +42,7 @@ dev_dependencies:
   # splash
   flutter_native_splash: ^1.2.1
 flutter_native_splash:
-  image: assets/images/karting.png
+  image: assets/icons/logoo.png
   color: "#000000"
 
 

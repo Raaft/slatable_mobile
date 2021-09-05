@@ -1,42 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:slatable_mobile/config/colors.dart';
 import 'package:slatable_mobile/config/routes.dart';
-import 'package:slatable_mobile/modules/auth/view/screens/managerInfoScreen.dart';
 import 'package:slatable_mobile/shared/services/sailor.dart';
-import 'package:slatable_mobile/shared/ui/components/titledTextField.dart';
 
-createNextAccButton(context, String title) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 30.0),
-    child: Container(
-        height: 56,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: MyColor.button,
-          borderRadius: BorderRadius.circular(25),
-        ),
-        child: ElevatedButton(
-          onPressed: (){ navTo(context, ManagerInfoScreen());},
-          child: Text(title,
-              style: TextStyle(
-                  color: MyColor.buttonText,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
-                  fontFamily: "NetflixSans")),
-          style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(MyColor.button),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(25),
-              ))),
-        )),
-  );
-}
 
 createTextAndIcon(BuildContext context) {
   return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 24),
+    padding: const EdgeInsets.symmetric(vertical: 35),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -58,8 +28,7 @@ createTextAndIcon(BuildContext context) {
   );
 }
 
-
-CreateAccHead(String headTitle, String subTitle) {
+createAccHead(String headTitle, String subTitle) {
   return Container(
     padding: EdgeInsets.only(right: 30, left: 30, bottom: 24),
     child: Column(
@@ -94,7 +63,7 @@ CreateAccHead(String headTitle, String subTitle) {
 }
 
 showMyDialog(BuildContext context) {
-  return  showDialog(
+  return showDialog(
     context: context,
     barrierDismissible: false, // user must tap button!
     builder: (BuildContext context) {
@@ -121,7 +90,7 @@ showMyDialog(BuildContext context) {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   TextButton(
-                    onPressed: (){},
+                    onPressed: () {},
                     child: Text(
                       'Not Yet!',
                       style: TextStyle(
@@ -131,8 +100,9 @@ showMyDialog(BuildContext context) {
                     ),
                   ),
                   TextButton(
-                    onPressed: (){
-                      Sailor.toNamed(Routes.managerInfoScreen);                    },
+                    onPressed: () {
+                      Sailor.toNamed(Routes.managerInfoScreen);
+                    },
                     child: Text('Yes',
                         style: TextStyle(
                             fontWeight: FontWeight.w600,
