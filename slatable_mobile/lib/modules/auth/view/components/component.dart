@@ -5,10 +5,10 @@ createColoredButton(
   context,
   String title,
   Color color,
-    Function function(),
+  void function(),
 ) {
   return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 11),
+    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
     child: Container(
         height: 56,
         width: double.infinity,
@@ -34,6 +34,44 @@ createColoredButton(
   );
 }
 
+createColoredRowButton(
+  context,
+  String title,
+  Color titleColor,
+  Color color,
+  double width,
+  Widget widget,
+  void function(),
+) {
+  return Container(
+      height: 56,
+      width: width,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(24),
+      ),
+      child: ElevatedButton(
+        onPressed: function,
+        child: Row(
+          children: [
+            widget,
+            Text(title,
+                style: TextStyle(
+                    color: titleColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                    fontFamily: "NetflixSans")),
+          ],
+        ),
+        style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(color),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25),
+            ))),
+      ));
+}
+
 createOutLinedButton(
   context,
   String title,
@@ -53,7 +91,7 @@ createOutLinedButton(
           onPressed: function,
           child: Text(title,
               style: TextStyle(
-                  color: MyColor.buttonText,
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 14,
                   fontFamily: "NetflixSans")),
@@ -134,3 +172,6 @@ navTo(context, Widget screen) async {
   return await Navigator.push(
       context, MaterialPageRoute(builder: (context) => screen));
 }
+ navBack(context){
+    return  Navigator.pop(context);
+ }

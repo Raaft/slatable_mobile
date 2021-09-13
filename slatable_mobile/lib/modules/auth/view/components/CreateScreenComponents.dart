@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:slatable_mobile/config/colors.dart';
 
 buildSwitch(String title) {
   return Padding(

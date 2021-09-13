@@ -5,8 +5,9 @@ import 'package:slatable_mobile/config/app_theme.dart';
 import 'package:slatable_mobile/cubit/mainCubit/cubit.dart';
 import 'package:slatable_mobile/cubit/mainCubit/states.dart';
 
+import 'package:slatable_mobile/modules/home/view/Screens/homelightEmptyScreen.dart';
+
 import 'cubit/bloc_obsirve.dart';
-import 'modules/auth/view/screens/welcomeScreen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,9 +28,10 @@ class Slatable extends StatelessWidget {
               return MaterialApp(
                 title: 'Flutter Demo',
                 theme: lightAppTheme,
-                home: WelcomeScreen(
+                home: HomeLightEmptyScreen(),
+                /*  WelcomeScreen(
                   key: UniqueKey(),
-                ),
+                )  */
               );
             }));
   }
