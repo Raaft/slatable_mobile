@@ -12,16 +12,17 @@ buildButtons(BuildContext context) {
         children: [
           createColoredRowButton(
               context,
-              "New take",Colors.black,
+              "New take",
+              Colors.black,
               MyColor.button,
               123,
               Icon(
                 Icons.add,
                 color: HexColor("#8C7D4F"),
               ),
-                  () {}),
+              () {}),
           InkWell(
-            onTap: (){
+            onTap: () {
               navTo(context, AudioRecordingScreen());
             },
             child: CircleAvatar(
@@ -73,7 +74,7 @@ buildHeadContainer() {
                 ),
                 Text("BANDO FETT",
                     style:
-                    TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
+                        TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
                 Row(
                   children: [
                     Text("Scenes (6) > Takes (0)",
@@ -93,8 +94,8 @@ buildHeadContainer() {
             Column(
               children: [
                 Text("Draft",
-                    style: TextStyle(
-                        fontSize: 15, fontWeight: FontWeight.normal)),
+                    style:
+                        TextStyle(fontSize: 15, fontWeight: FontWeight.normal)),
                 IconButton(
                     onPressed: () {},
                     icon: Image.asset("assets/icons/slider.png")),
@@ -114,27 +115,25 @@ buildHeadContainer() {
     decoration: BoxDecoration(
 //  color: Colors.white,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(34),
-          topRight: Radius.circular(34),
-        )),
+      topLeft: Radius.circular(34),
+      topRight: Radius.circular(34),
+    )),
   );
 }
+
 buildItemCard() {
   return Container(
     // padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(24),
-
     ),
     child: ClipRRect(
       borderRadius: BorderRadius.circular(24),
-
       child: Stack(
         alignment: Alignment.bottomLeft,
         children: <Widget>[
           Image(
             image: AssetImage("assets/icons/person.jpg"),
-
             fit: BoxFit.fill,
           ),
           Padding(

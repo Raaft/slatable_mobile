@@ -124,7 +124,7 @@ createBodySetting(
                     ),
                     //height: MediaQuery.of(context).size.height - 100,
                     decoration: BoxDecoration(
-                        color: HexColor("#F3F6FC"),
+                        color: HexColor("#E6E8EF"),
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(34),
                             topRight: Radius.circular(34))),
