@@ -4,12 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:slatable_mobile/config/app_theme.dart';
 import 'package:slatable_mobile/cubit/mainCubit/cubit.dart';
 import 'package:slatable_mobile/cubit/mainCubit/states.dart';
-import 'package:slatable_mobile/modules/home/view/Screens/addLinksForInvitedAuditionFreeVersion.dart';
-import 'package:slatable_mobile/modules/home/view/Screens/addLinksForInvitedAuditionProoScreen.dart';
-
-import 'package:slatable_mobile/modules/home/view/Screens/homelightEmptyScreen.dart';
-import 'package:slatable_mobile/modules/home/view/Screens/invitedAuditionAddLinksScreen.dart';
-import 'package:slatable_mobile/modules/home/view/Screens/settingsScreen.dart';
+import 'package:slatable_mobile/modules/auth/view/screens/welcomeScreen.dart';
 
 import 'cubit/bloc_obsirve.dart';
 
@@ -32,42 +27,8 @@ class Slatable extends StatelessWidget {
               return MaterialApp(
                 title: 'Flutter Demo',
                 theme: lightAppTheme,
-                home: SettingsScreen(),
+                home: WelcomeScreen(),
               );
             }));
   }
 }
-/*    class MyHomePage extends StatefulWidget {
-  MyHomePage({required Key key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  FlutterFFmpeg? flutterFFmpeg;
-
-  @override
-  void initState() {
-    FlutterFFmpeg flutterFFmpeg = FlutterFFmpeg();
-
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[],
-        ),
-      ),
-    );
-  }
-}   */

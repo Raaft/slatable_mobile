@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:slatable_mobile/config/colors.dart';
-import 'package:slatable_mobile/modules/auth/view/components/component.dart';
+import 'package:hexcolor/hexcolor.dart';
+
 import 'package:slatable_mobile/modules/home/view/componant/homeCompnant.dart';
 import 'package:slatable_mobile/modules/home/view/componant/homeLightEmptycomp.dart';
 
@@ -10,8 +10,8 @@ class HomeLightEmptyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: createBodyHome([
-        buildHead(),
+      body: createBodyHome(HexColor("#F3F6FC"),[
+        buildHead(context),
         SizedBox(height: 92),
         buildBody(),
         SizedBox(height: 140),

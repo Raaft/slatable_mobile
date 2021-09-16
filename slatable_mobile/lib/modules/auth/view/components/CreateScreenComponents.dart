@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 buildSwitch(String title) {
@@ -10,11 +11,11 @@ buildSwitch(String title) {
         Text(
           title,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: GoogleFonts.inter(textStyle: TextStyle(
               color: HexColor("#E6E8EF"),
-              //  fontWeight: FontWeight.w300,
+                fontWeight: FontWeight.w400,
               fontSize: 12,
-              fontFamily: "NetflixSans"),
+              fontFamily: "NetflixSans")),
         ),
         Switch(
           value: true,

@@ -22,12 +22,14 @@ class CardReviewScreen extends StatelessWidget {
               child: Scaffold(
                 appBar: PreferredSize(
                   preferredSize: Size.fromHeight(107.0),
+
                   // here the desired height
                   child: AppBar(
                       elevation: 0,
-                      leading: BackButton(
-                        color: Colors.black,
-                      )),
+                      leading: IconButton(onPressed: () => navBack(context),
+                          icon: Icon(Icons.keyboard_backspace,color: Colors.black))
+
+                  ),
 
                   // backgroundColor: Color(0xe1f5fe).withOpacity(1.0),
                 ),

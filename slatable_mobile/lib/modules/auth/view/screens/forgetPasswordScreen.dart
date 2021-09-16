@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:slatable_mobile/config/colors.dart';
 import 'package:slatable_mobile/cubit/mainCubit/cubit.dart';
@@ -74,11 +75,11 @@ class ForgetPasswordScreen extends StatelessWidget {
                               child: Text(
                                 "If we find an account associated with this email address we’ll email a reset link to the email above.",
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
+                                style: GoogleFonts.inter(textStyle: TextStyle(
                                     fontWeight: FontWeight.w400,
                                     fontSize: 16,
                                     fontFamily: "NetflixSans",
-                                    color: Colors.white),
+                                    color: Colors.white),)
                               ),
                             )
                           ],

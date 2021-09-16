@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:slatable_mobile/config/colors.dart';
-import 'package:slatable_mobile/modules/auth/view/components/component.dart';
+
 import 'package:slatable_mobile/modules/home/view/componant/homeCompnant.dart';
 import 'package:slatable_mobile/modules/home/view/componant/takesEmptyCompo.dart';
 
@@ -12,8 +11,8 @@ class TakesEmptyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: createBodyHome([
-        buildHeadContainer(),
+      body: createBodyHome(HexColor("#D7E2FE"),[
+        buildHeadContainer(context),
         SizedBox(height: 90),
         Image.asset(
           "assets/icons/Line.png",
@@ -31,6 +30,4 @@ class TakesEmptyScreen extends StatelessWidget {
       ], MainAxisAlignment.spaceBetween),
     );
   }
-
-
 }

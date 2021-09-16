@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:slatable_mobile/config/colors.dart';
 import 'package:slatable_mobile/modules/auth/view/components/component.dart';
@@ -18,7 +20,11 @@ class NewAudition extends StatelessWidget {
         padding: const EdgeInsets.all(14),
         child: Text(
           "Audition information",
-          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+          style: GoogleFonts.inter(
+              textStyle: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  color: HexColor("#898B91"))),
           textAlign: TextAlign.start,
         ),
       ),
@@ -40,7 +46,11 @@ class NewAudition extends StatelessWidget {
         padding: const EdgeInsets.all(14),
         child: Text(
           "Contact information",
-          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+          style:  GoogleFonts.inter(
+              textStyle: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  color: HexColor("#898B91"))),
           textAlign: TextAlign.start,
         ),
       ),
@@ -66,7 +76,11 @@ class NewAudition extends StatelessWidget {
         padding: const EdgeInsets.all(14),
         child: Text(
           "PRO Title Card settings",
-          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+          style:  GoogleFonts.inter(
+              textStyle: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  color: HexColor("#898B91"))),
           textAlign: TextAlign.start,
         ),
       ),
@@ -77,6 +91,8 @@ class NewAudition extends StatelessWidget {
               ListTile(
                   title: Text("Headshot"),
                   leading: Container(
+                    alignment: Alignment.center,
+
                     height: 17,
                     width: 39,
                     child: Text(
@@ -93,6 +109,8 @@ class NewAudition extends StatelessWidget {
               ListTile(
                   title: Text("Slate"),
                   leading: Container(
+                    alignment: Alignment.center,
+
                     height: 17,
                     width: 39,
                     child: Text(
@@ -112,7 +130,11 @@ class NewAudition extends StatelessWidget {
         padding: const EdgeInsets.all(14),
         child: Text(
           "Tape preferences",
-          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+          style:  GoogleFonts.inter(
+              textStyle: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  color: HexColor("#898B91"))),
           textAlign: TextAlign.start,
         ),
       ),
@@ -123,6 +145,8 @@ class NewAudition extends StatelessWidget {
               ListTile(
                   title: Text("Title cards"),
                   leading: Container(
+                    alignment: Alignment.center,
+
                     height: 17,
                     width: 39,
                     child: Text(
@@ -139,6 +163,8 @@ class NewAudition extends StatelessWidget {
               ListTile(
                   title: Text("Transitions"),
                   leading: Container(
+                    alignment: Alignment.center,
+
                     height: 17,
                     width: 39,
                     child: Text(
@@ -160,7 +186,11 @@ class NewAudition extends StatelessWidget {
         padding: const EdgeInsets.all(14),
         child: Text(
           "AUDITIONDROP",
-          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+          style:  GoogleFonts.inter(
+              textStyle: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  color: HexColor("#898B91"))),
           textAlign: TextAlign.start,
         ),
       ),
@@ -171,6 +201,7 @@ class NewAudition extends StatelessWidget {
               ListTile(
                   title: Text("Links"),
                   leading: Container(
+                    alignment: Alignment.center,
                     height: 17,
                     width: 39,
                     child: Text(
@@ -186,7 +217,11 @@ class NewAudition extends StatelessWidget {
                       onPressed: () {}, icon: Icon(Icons.arrow_forward_ios))),
             ],
           )),
-      createColoredButton(context, "Save Audition", HexColor("#DEF0D8"), () {})
+      Padding(
+        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+        child: createColoredButton(
+            context, "Save Audition", HexColor("#DEF0D8"), () {}),
+      )
     ], MainAxisAlignment.start));
   }
 

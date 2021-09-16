@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:slatable_mobile/config/colors.dart';
 
- createBodyHome(
-    List<Widget> list, MainAxisAlignment mainAxisAlignment) {
+createBodyHome(Color color,List<Widget> list, MainAxisAlignment mainAxisAlignment) {
   return CustomScrollView(
     slivers: [
       SliverAppBar(
@@ -17,7 +16,7 @@ import 'package:slatable_mobile/config/colors.dart';
         delegate: SliverChildBuilderDelegate(
           (context, position) {
             return Container(
-              color: HexColor("#121419"),
+              color: color,
               child: Stack(
                 children: [
                   Container(
@@ -60,45 +59,49 @@ import 'package:slatable_mobile/config/colors.dart';
   );
 }
 
-buildIconsContainer(List<Widget> list, Widget widget) {
-  return Container(
-    padding: const EdgeInsets.only(left: 10, right: 10),
-    child: Column(
-      children: [
-        Container(
-          padding: EdgeInsets.only(left: 24),
-          height: 92,
-          width: double.infinity,
-          decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(25)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: list),
-              Container(
-                margin: EdgeInsets.all(4),
-                child: Center(child: widget),
-                height: 84,
-                width: 68,
-                decoration: BoxDecoration(
-                    color: MyColor.background,
-                    borderRadius: BorderRadius.circular(25)),
-              )
-            ],
-          ),
-        )
-      ],
+
+buildIconsContainer(List<Widget> list, Widget widget,Key key,context) {
+  return Dismissible(
+    background: Container(color: Colors.red),
+    secondaryBackground: Icon(Icons.delete),
+
+    key: key,
+    child: Container(
+      padding: const EdgeInsets.only(left: 10, right: 10),
+      child: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.only(left: 24),
+            height: 92,
+            width: double.infinity,
+            decoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(25)),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: list),
+                Container(
+                  margin: EdgeInsets.all(4),
+                  child: Center(child: widget),
+                  height: 84,
+                  width: 68,
+                  decoration: BoxDecoration(
+                      color: MyColor.background,
+                      borderRadius: BorderRadius.circular(25)),
+                )
+              ],
+            ),
+          )
+        ],
+      ),
     ),
   );
 }
 
-
-
-createBodySetting(
-    List<Widget> list, MainAxisAlignment mainAxisAlignment) {
+createBodySetting(List<Widget> list, MainAxisAlignment mainAxisAlignment) {
   return CustomScrollView(
     slivers: [
       SliverAppBar(
@@ -110,16 +113,17 @@ createBodySetting(
       ),
       SliverList(
         delegate: SliverChildBuilderDelegate(
-              (context, position) {
+          (context, position) {
             return Container(
               color: HexColor("#121419"),
               child: Stack(
                 children: [
                   Container(
-                    
                     child: Align(
                       child: Column(
-                          mainAxisAlignment: mainAxisAlignment, children: list),
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: mainAxisAlignment,
+                          children: list),
                       alignment: Alignment.topCenter,
                     ),
                     //height: MediaQuery.of(context).size.height - 100,

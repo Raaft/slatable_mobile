@@ -33,6 +33,10 @@ dependencies:
 
   hexcolor: ^2.0.5
 
+  #font
+  google_fonts: ^2.1.0
+
+
 
 
 dev_dependencies:

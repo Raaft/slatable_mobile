@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:slatable_mobile/modules/auth/view/components/component.dart';
+import 'package:slatable_mobile/modules/home/view/Screens/addAgentScreen.dart';
+import 'package:slatable_mobile/modules/home/view/Screens/addLinksForInvitedAuditionProoScreen.dart';
+import 'package:slatable_mobile/modules/home/view/Screens/addmanagerScreen.dart';
+import 'package:slatable_mobile/modules/home/view/Screens/headshotgallery.dart';
+import 'package:slatable_mobile/modules/home/view/Screens/slatesScreen.dart';
 
 import 'package:slatable_mobile/modules/home/view/componant/homeCompnant.dart';
 
@@ -17,7 +23,11 @@ class InvitedAuditionAddLinksScreen extends StatelessWidget {
         padding: const EdgeInsets.all(14),
         child: Text(
           "Audition information",
-          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+          style: GoogleFonts.inter(
+              textStyle: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  color: HexColor("#898B91"))),
           textAlign: TextAlign.start,
         ),
       ),
@@ -41,7 +51,11 @@ class InvitedAuditionAddLinksScreen extends StatelessWidget {
         padding: const EdgeInsets.all(14),
         child: Text(
           "Contact information",
-          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+          style: GoogleFonts.inter(
+              textStyle: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  color: HexColor("#898B91"))),
           textAlign: TextAlign.start,
         ),
       ),
@@ -52,12 +66,12 @@ class InvitedAuditionAddLinksScreen extends StatelessWidget {
             ListTile(
               title: Text("Agent"),
               trailing: IconButton(
-                  onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
+                  onPressed: () {navTo(context, AddAgentScreen());}, icon: Icon(Icons.arrow_forward_ios)),
             ),
             ListTile(
               title: Text("Manager"),
               trailing: IconButton(
-                  onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
+                  onPressed: () {navTo(context, AddManagerScreen());}, icon: Icon(Icons.arrow_forward_ios)),
             ),
             ListTile(
               title: Text("Email"),
@@ -74,7 +88,11 @@ class InvitedAuditionAddLinksScreen extends StatelessWidget {
         padding: const EdgeInsets.all(14),
         child: Text(
           "Requested from Casting",
-          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+          style: GoogleFonts.inter(
+              textStyle: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  color: HexColor("#898B91"))),
           textAlign: TextAlign.start,
         ),
       ),
@@ -85,12 +103,12 @@ class InvitedAuditionAddLinksScreen extends StatelessWidget {
             ListTile(
               title: Text("Your headshot"),
               trailing: IconButton(
-                  onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
+                  onPressed: () {navTo(context, HeadshotGallery());}, icon: Icon(Icons.arrow_forward_ios)),
             ),
             ListTile(
               title: Text("Your slate"),
               trailing: IconButton(
-                  onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
+                  onPressed: () {navTo(context, SlatesScreen());}, icon: Icon(Icons.arrow_forward_ios)),
             ),
             ListTile(
               title: Text("Lifestyle photos"),
@@ -100,35 +118,42 @@ class InvitedAuditionAddLinksScreen extends StatelessWidget {
             ListTile(
               title: Text("Links"),
               trailing: IconButton(
-                  onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
+                  onPressed: () {navTo(context, AddLinksForInvitedAuditionProScreen());}, icon: Icon(Icons.arrow_forward_ios)),
             ),
           ],
         ),
       ),
-          Padding(
-            padding: const EdgeInsets.all(14),
-            child: Text(
-              "Notes from Casting",
-              style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
-              textAlign: TextAlign.start,
+      Padding(
+        padding: const EdgeInsets.all(14),
+        child: Text(
+          "Notes from Casting",
+          style: GoogleFonts.inter(
+              textStyle: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  color: HexColor("#898B91"))),
+          textAlign: TextAlign.start,
+        ),
+      ),
+      Container(
+        color: Colors.white,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Text(
+                "We need at least 5 takes for 2 different scenes: Cry, Laugh.\n \nPlease send on time.\n\nThank you.",
+                style: TextStyle(color: Colors.grey),
+              ),
             ),
-          ),
-          Container(
-            color: Colors.white,
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Text(
-                    "We need at least 5 takes for 2 different scenes: Cry, Laugh.\n \nPlease send on time.\n\nThank you.",
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                ),
-                createColoredButton(context, "Download PDF", HexColor("#C8D0E5"), () {})
-              ],
-            ),
-          ),
-
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 20,horizontal: 30),
+              child: createColoredButton(
+                  context, "Download PDF", HexColor("#C8D0E5"), () {}),
+            )
+          ],
+        ),
+      ),
     ], MainAxisAlignment.start));
   }
 

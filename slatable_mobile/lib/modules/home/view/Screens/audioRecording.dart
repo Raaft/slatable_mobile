@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:slatable_mobile/modules/auth/view/components/component.dart';
+import 'package:slatable_mobile/modules/home/view/Screens/leistenReccordingScreen.dart';
 
 class AudioRecordingScreen extends StatelessWidget {
   const AudioRecordingScreen({Key? key}) : super(key: key);
@@ -29,7 +31,7 @@ class AudioRecordingScreen extends StatelessWidget {
                 height: 260,
                 width: double.infinity,
                 child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {navTo(context, ListenRecordingScreen());},
                     icon: Image.asset(
                       "assets/icons/microphoneRecor.png",
                       fit: BoxFit.cover,

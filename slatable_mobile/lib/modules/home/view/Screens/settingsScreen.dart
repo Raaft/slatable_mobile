@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 
 import 'package:slatable_mobile/modules/home/view/componant/homeCompnant.dart';
@@ -16,7 +18,11 @@ class SettingsScreen extends StatelessWidget {
         padding: const EdgeInsets.all(14),
         child: Text(
           "Your information",
-          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+          style:  GoogleFonts.inter(
+              textStyle: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  color: HexColor("#898B91"))),
           textAlign: TextAlign.start,
         ),
       ),
@@ -46,7 +52,11 @@ class SettingsScreen extends StatelessWidget {
         padding: const EdgeInsets.all(14),
         child: Text(
           "Purchases",
-          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+          style:  GoogleFonts.inter(
+              textStyle: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  color: HexColor("#898B91"))),
           textAlign: TextAlign.start,
         ),
       ),
@@ -69,7 +79,11 @@ class SettingsScreen extends StatelessWidget {
         padding: const EdgeInsets.all(14),
         child: Text(
           "LEARN",
-          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+          style:  GoogleFonts.inter(
+              textStyle: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  color: HexColor("#898B91"))),
           textAlign: TextAlign.start,
         ),
       ),
@@ -89,7 +103,11 @@ class SettingsScreen extends StatelessWidget {
         padding: const EdgeInsets.all(14),
         child: Text(
           "Company",
-          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+          style:  GoogleFonts.inter(
+              textStyle: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  color: HexColor("#898B91"))),
           textAlign: TextAlign.start,
         ),
       ),
@@ -114,7 +132,11 @@ class SettingsScreen extends StatelessWidget {
         padding: const EdgeInsets.all(14),
         child: Text(
           "Information",
-          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+          style:  GoogleFonts.inter(
+              textStyle: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  color: HexColor("#898B91"))),
           textAlign: TextAlign.start,
         ),
       ),
@@ -148,7 +170,7 @@ class SettingsScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Audition ",
+                "Settings",
                 style: TextStyle(fontSize: 33, fontWeight: FontWeight.w700),
               ),
               IconButton(

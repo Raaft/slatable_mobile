@@ -1,9 +1,6 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hexcolor/hexcolor.dart';
-
 
 import 'package:slatable_mobile/modules/home/view/componant/homeCompnant.dart';
 
@@ -14,120 +11,196 @@ class MyInfoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: createBodySetting([
-          buildHeadContainer(),
-          Padding(
-            padding: const EdgeInsets.all(14),
-            child: Text(
-              "DEFAULT HEADSHOT",
-              style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
-              textAlign: TextAlign.start,
+      buildHeadContainer(),
+      Padding(
+        padding: const EdgeInsets.all(14),
+        child: Text(
+          "DEFAULT HEADSHOT",
+          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+          textAlign: TextAlign.start,
+        ),
+      ),
+      Container(
+        height: 200,
+        color: HexColor("#F3F6FC"),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            CircleAvatar(
+              radius: 60,
+              child: Icon(
+                Icons.person,
+                color: Colors.white,
+                size: 70,
+              ),
+              backgroundColor: Colors.grey,
             ),
-          ),
-          Container(
-            height: 200,
-            color: HexColor("#F3F6FC"),
-            child: Row(
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                CircleAvatar(radius: 50,child: Icon(Icons.person,color: Colors.white,size: 70,),
-                backgroundColor: Colors.grey,),
-                Column(children: [
+                Container(
+                  height: 48,
+                  width: 48,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(13),
+                      border: Border.all(color: Colors.grey)),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.image,
+                      color: HexColor("#121419"),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 48,
+                  width: 48,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(13),
+                      border: Border.all(color: Colors.grey)),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.delete,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
 
-                ],)
               ],
+            )
+          ],
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(14),
+        child: Text(
+          "YOUR information",
+          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+          textAlign: TextAlign.start,
+        ),
+      ),
+      Container(
+        color: Colors.white,
+        child: Column(
+          children: [
+            ListTile(
+              title: Text("Stage name"),
+              trailing: Text("Enter Name"),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(14),
-            child: Text(
-              "Purchases",
-              style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
-              textAlign: TextAlign.start,
+            ListTile(
+              title: Text("Email address"),
+              trailing: Text("Enter Email"),
             ),
-          ),
-          Container(
-            color: Colors.white,
-            child: Column(
-              children: [
-                ListTile(
-                  title: Text("SlatablePRO subscription"),
-                  trailing: IconButton(
-                      onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
-                ),
-                ListTile(
-                  title: Text("Restore purchases"),
-                ),
-              ],
+            ListTile(
+              title: Text("Phone number"),
+              trailing: Text("Enter contact number"),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(14),
-            child: Text(
-              "LEARN",
-              style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
-              textAlign: TextAlign.start,
+            ListTile(
+              title: Text("Union Affiliation"),
+              trailing: Text("Enter union"),
             ),
-          ),
-          Container(
-            color: Colors.white,
-            child: Column(
-              children: [
-                ListTile(
-                  title: Text("How-to videos"),
-                  trailing: IconButton(
-                      onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
-                ),
-              ],
+          ],
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(14),
+        child: Text(
+          "PRO Title cards",
+          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+          textAlign: TextAlign.start,
+        ),
+      ),
+      Container(
+        color: Colors.white,
+        child: Column(
+          children: [
+            ListTile(
+              title: Text("How-to videos"),
+              leading: buildPro(),
+              trailing: IconButton(
+                  onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(14),
-            child: Text(
-              "Company",
-              style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
-              textAlign: TextAlign.start,
+            ListTile(
+              title: Text("My slates"),
+              leading: buildPro(),
+              trailing: IconButton(
+                  onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
             ),
-          ),
-          Container(
-            color: Colors.white,
-            child: Column(
-              children: [
-                ListTile(
-                  title: Text("Support"),
-                  trailing: IconButton(
-                      onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
-                ),
-                ListTile(
-                  title: Text("Legal"),
-                  trailing: IconButton(
-                      onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
-                ),
-              ],
+          ],
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(14),
+        child: Text(
+          "AuditionDROP Links",
+          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+          textAlign: TextAlign.start,
+        ),
+      ),
+      Container(
+        color: Colors.white,
+        child: Column(
+          children: [
+            ListTile(
+              title: Text("Reel"),
+              leading: buildPro(),
+              subtitle: Text("Enter reel link"),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(14),
-            child: Text(
-              "Information",
-              style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
-              textAlign: TextAlign.start,
+            ListTile(
+              title: Text("Resume"),
+              leading: buildPro(),
+              subtitle: Text("Enter resume link"),
             ),
-          ),
-          Container(
-            color: Colors.white,
-            child: Column(
-              children: [
-                ListTile(
-                  title: Text("Available space"),
-                  trailing: Text("60GB"),
-                ),
-                ListTile(
-                  title: Text("Version"),
-                  trailing: Text("0.1"),
-                ),
-              ],
+            ListTile(
+              title: Text("Website"),
+              leading: buildPro(),
+              subtitle: Text("Enter website link"),
             ),
-          ),
-        ], MainAxisAlignment.start));
+          ],
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(14),
+        child: Text(
+          "ACCOUNT",
+          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+          textAlign: TextAlign.start,
+        ),
+      ),
+      Container(
+        color: Colors.white,
+        child: Column(
+          children: [
+            ListTile(
+              title: Text("Allow Notifications"),
+              trailing: IconButton(
+                  onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
+            ),
+            ListTile(
+              title: Text("Delete my account"),
+              trailing: IconButton(
+                  onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
+            ),
+          ],
+        ),
+      ),
+    ], MainAxisAlignment.start));
+  }
+
+  Container buildPro() {
+    return Container(
+      alignment: Alignment.center,
+      height: 17,
+      width: 39,
+      child: Text(
+        "PRO",
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 11, color: Colors.white),
+      ),
+      decoration: BoxDecoration(
+          color: Colors.deepPurple, borderRadius: BorderRadius.circular(34)),
+    );
   }
 
   buildHeadContainer() {
