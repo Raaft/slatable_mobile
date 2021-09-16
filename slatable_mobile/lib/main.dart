@@ -1,30 +1,41 @@
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ffmpeg/flutter_ffmpeg.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:slatable_mobile/config/app_theme.dart';
+import 'package:slatable_mobile/cubit/mainCubit/cubit.dart';
+import 'package:slatable_mobile/cubit/mainCubit/states.dart';
 
+import 'cubit/bloc_obsirve.dart';
+import 'modules/auth/view/screens/welcomeScreen.dart';
 
 void main() {
-
+  WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = MyBlocObserver();
   runApp(Slatable());
 }
 
 class Slatable extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page', key: UniqueKey(),),
-    );
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider<MainCubit>(create: (BuildContext context) => MainCubit())
+        ],
+        child: BlocConsumer<MainCubit, MainState>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              return MaterialApp(
+                title: 'Flutter Demo',
+                theme: lightAppTheme,
+                home: WelcomeScreen(
+                  key: UniqueKey(),
+                ),
+              );
+            }));
   }
 }
-
-class MyHomePage extends StatefulWidget {
+/*    class MyHomePage extends StatefulWidget {
   MyHomePage({required Key key, required this.title}) : super(key: key);
-
 
   final String title;
 
@@ -35,7 +46,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   FlutterFFmpeg? flutterFFmpeg;
 
-
   @override
   void initState() {
     FlutterFFmpeg flutterFFmpeg = FlutterFFmpeg();
@@ -43,25 +53,18 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
-
         title: Text(widget.title),
       ),
       body: Center(
-
         child: Column(
-
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-
-          ],
+          children: <Widget>[],
         ),
       ),
     );
   }
-}
+}   */

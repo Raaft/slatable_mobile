@@ -25,9 +25,26 @@ dependencies:
   # state management
   flutter_riverpod: ^0.14.0+1
 
+  bloc: ^7.1.0
+  flutter_bloc: ^7.2.0
+
+
+  #color
+
+  hexcolor: ^2.0.5
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  # splash
+  flutter_native_splash: ^1.2.1
+flutter_native_splash:
+  image: assets/icons/logoo.png
+  color: "#000000"
+
 
 flutter:
 
@@ -35,5 +52,3 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
-    - assets/sounds/
-    - assets/animations/
