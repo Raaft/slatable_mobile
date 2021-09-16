@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:slatable_mobile/modules/auth/view/components/component.dart';
 import 'package:slatable_mobile/shared/services/sailor.dart';
 import 'package:slatable_mobile/shared/ui/helper/palette.dart';
 
@@ -25,4 +26,13 @@ class BackArrow extends StatelessWidget {
       );}),
     );
   }
+}
+
+
+back(context,Color backgroundColor,Color color){
+  return AppBar(
+    backgroundColor:backgroundColor ,
+    leading: IconButton(onPressed: () => navBack(context),
+        icon: Icon(Icons.keyboard_backspace,color: color)),
+  );
 }

@@ -5,11 +5,9 @@ import 'package:slatable_mobile/config/colors.dart';
 import 'package:slatable_mobile/cubit/mainCubit/cubit.dart';
 import 'package:slatable_mobile/cubit/mainCubit/states.dart';
 import 'package:slatable_mobile/modules/auth/view/components/CreateAccComponents.dart';
-import 'package:slatable_mobile/modules/auth/view/components/agentInfocomponents.dart';
 import 'package:slatable_mobile/modules/auth/view/components/component.dart';
 import 'package:slatable_mobile/modules/auth/view/screens/cardReviewScreen.dart';
 import 'package:slatable_mobile/shared/const.dart';
-import 'package:slatable_mobile/shared/ui/components/titledTextField.dart';
 
 class AgentInfoScreen extends StatelessWidget {
   @override
@@ -27,19 +25,21 @@ class AgentInfoScreen extends StatelessWidget {
               preferredSize: Size.fromHeight(107.0), // here the desired height
               child: AppBar(
                   elevation: 0,
-                  leading: BackButton(
-                    color: Colors.black,
-                  )),
+                  leading: IconButton(onPressed: () => navBack(context),
+                      icon: Icon(Icons.keyboard_backspace,color: Colors.black,))),
 
               // backgroundColor: Color(0xe1f5fe).withOpacity(1.0),
             ),
             body: SingleChildScrollView(
               child: Container(
-                height: contextHeight(context),
+                height: contextHeight(context)-140,
+                           padding: EdgeInsets.symmetric(horizontal: 10),
+
                 child: Column(
                   children: [
                     createAccHead("Agent Info",
                         "Fill in as much as you can. You get to decide later if you want to include this info with your self tape."),
+                    SizedBox(height: 7.6),
                     createTextField(
                       context,
                       "Name",
@@ -47,6 +47,7 @@ class AgentInfoScreen extends StatelessWidget {
                       nameController,
                       TextInputType.text,
                     ),
+                    SizedBox(height: 7.6),
                     createTextField(
                       context,
                       "Company",
@@ -54,6 +55,7 @@ class AgentInfoScreen extends StatelessWidget {
                       companyController,
                       TextInputType.text,
                     ),
+                    SizedBox(height: 7.6),
                     createTextField(
                       context,
                       "Contact number",
@@ -61,6 +63,7 @@ class AgentInfoScreen extends StatelessWidget {
                       contactNumberController,
                       TextInputType.text,
                     ),
+                    SizedBox(height: 7.6),
                     createTextField(
                       context,
                       "Email address",
@@ -68,22 +71,21 @@ class AgentInfoScreen extends StatelessWidget {
                       emailController,
                       TextInputType.emailAddress,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 22),
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "Skip",
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline5!
-                              .copyWith(
-                                  fontSize: 14, fontWeight: FontWeight.w700),
-                        ),
+                    SizedBox(height: 37),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Skip",
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline5!
+                            .copyWith(
+                                fontSize: 14, fontWeight: FontWeight.w700),
                       ),
                     ),
-                    createColoredButton(context, "Done", MyColor.button,
-                        () => navTo(context, CardReviewScreen())),
+                    SizedBox(height: 34),
+                    Padding(padding:EdgeInsets.symmetric(horizontal: 20) ,child: createColoredButton(context, "Next (3/3)", MyColor.button,
+                            () => navTo(context, CardReviewScreen())),)
                   ],
                 ),
               ),
