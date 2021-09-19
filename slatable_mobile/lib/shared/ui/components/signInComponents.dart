@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:slatable_mobile/config/colors.dart';
+import 'package:slatable_mobile/shared/ui/helper/export.dart';
 
 createSignInButton(context, String title, Color color) {
   return Padding(
@@ -13,12 +14,7 @@ createSignInButton(context, String title, Color color) {
         ),
         child: ElevatedButton(
           onPressed: () {},
-          child: Text(title,
-              style: TextStyle(
-                  color: MyColor.buttonText,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
-                  fontFamily: "NetflixSans")),
+          child: Text(title, style: TextStyles.signInWithText),
           style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(color),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(

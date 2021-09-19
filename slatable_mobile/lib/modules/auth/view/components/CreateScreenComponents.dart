@@ -1,27 +1,30 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:slatable_mobile/shared/ui/helper/export.dart';
 
-buildSwitch(String title) {
+buildSwitch(String title, bool isBig) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 11.0),
     child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Text(
           title,
           textAlign: TextAlign.center,
-          style: GoogleFonts.inter(textStyle: TextStyle(
-              color: HexColor("#E6E8EF"),
-                fontWeight: FontWeight.w400,
-              fontSize: 12,
-              fontFamily: "NetflixSans")),
+          style: isBig ? TextStyles.agreeToPolicyBig : TextStyles.agreeToPolicy,
         ),
-        Switch(
-          value: true,
-          onChanged: (va) {},
-          activeColor: Colors.blue,
-        )
+        isBig
+            ? SizedBox(
+                width: 10,
+              )
+            : Container(),
+        CupertinoSwitch(
+          value: false,
+          onChanged: (v) {},
+          trackColor: Colors.white,
+        ),
       ],
     ),
   );

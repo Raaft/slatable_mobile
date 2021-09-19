@@ -9,11 +9,13 @@ import 'package:slatable_mobile/cubit/mainCubit/states.dart';
 import 'package:slatable_mobile/modules/auth/view/components/component.dart';
 
 import 'package:slatable_mobile/modules/auth/view/components/welcomeComponents.dart';
+import 'package:slatable_mobile/modules/auth/view/screens/forgetPasswordScreen.dart';
 import 'package:slatable_mobile/modules/auth/view/screens/notificationsScreen.dart';
 import 'package:slatable_mobile/modules/home/view/Screens/homelightEmptyScreen.dart';
 import 'package:slatable_mobile/shared/const.dart';
 import 'package:slatable_mobile/shared/ui/components/signInComponents.dart';
 import 'package:slatable_mobile/shared/ui/helper/back_arrow.dart';
+import 'package:slatable_mobile/shared/ui/helper/text_styles.dart';
 
 class SignInScreen extends StatelessWidget {
   @override
@@ -29,59 +31,50 @@ class SignInScreen extends StatelessWidget {
             child: Container(
               height: contextHeight(context),
               child: Scaffold(
-                backgroundColor: Colors.black,
-                appBar: PreferredSize(
-                  preferredSize: Size.fromHeight(107.0),
-                  // here the desired height
-                  child: back(context, Colors.black,Colors.white),
-
-                  // backgroundColor: Color(0xe1f5fe).withOpacity(1.0),
-                ),
-                body: SingleChildScrollView(
-                  child: Container(
-                    height: contextHeight(context) - 140,
-padding: EdgeInsets.all(10),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                            "Sign in",
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.inter(textStyle: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 32,
-                                color: Colors.white))
+                backgroundColor: Color(0xff121419),
+                body: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: contextHeight(context) * 0.1,
+                      ),
+                      Text("Sign in",
+                          textAlign: TextAlign.center, style: TextStyles.head1),
+                      SizedBox(
+                        height: contextHeight(context) * 0.1,
+                      ),
+                      createTextField(
+                        context,
+                        "Email Address",
+                        "Enter email address",
+                        emailController,
+                        TextInputType.emailAddress,
+                      ),
+                      SizedBox(height: 8),
+                      createTextField(
+                        context,
+                        "Password",
+                        "Choose password",
+                        passwordController,
+                        TextInputType.emailAddress,
+                      ),
+                      SizedBox(height: contextHeight(context) * 0.01),
+                      createColoredButton(context, "Sign in", MyColor.button,
+                          () => navTo(context, NotificationsScreen())),
+                      SizedBox(height: contextHeight(context) * 0.05),
+                      GestureDetector(
+                        onTap: () => navTo(context, ForgetPasswordScreen()),
+                        child: Text(
+                          'Forget your password? ',
+                          style: TextStyles.agreeToPolicyBig,
                         ),
-                        Column(
-                          children: [
-                            createTextField(
-                              context,
-                              "Email Address",
-                              "Enter email address",
-                              emailController,
-                              TextInputType.text,
-                            ),
-                            SizedBox(height: 10),
-                            createTextField(
-                              context,
-                              "Password",
-                              "Choose password",
-                              passwordController,
-                              TextInputType.visiblePassword,
-                            ),
-                            SizedBox(height: 10),
-
-                            createColoredButton(
-                                context, "Sign in", MyColor.button, () {
-                              navTo(context, NotificationsScreen());
-                            }),
-                            SizedBox(height: 33),
-                            forgetPasswordButton(HexColor("E6E8EF"), context)
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 50,right: 20,left: 20),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.only(bottom: 50),
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               createSignInButton(context,
                                   " Sign up with Apple button", Colors.white),
@@ -90,9 +83,9 @@ padding: EdgeInsets.all(10),
                                   " Sign in with Google button", Colors.white)
                             ],
                           ),
-                        )
-                      ],
-                    ),
+                        ),
+                      )
+                    ],
                   ),
                 ),
               ),

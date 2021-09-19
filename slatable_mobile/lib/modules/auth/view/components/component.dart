@@ -2,23 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:slatable_mobile/modules/auth/view/screens/managerInfoScreen.dart';
+import 'package:slatable_mobile/shared/ui/helper/export.dart';
 
-Future<void> showMyDialog(context,Widget widget) async {
+Future<void> showMyDialog(context, Widget widget) async {
   return showDialog<void>(
     context: context,
     barrierDismissible: false, // user must tap button!
     builder: (BuildContext context) {
       return AlertDialog(
-         // title: const Text('AlertDialog Title'),
+          // title: const Text('AlertDialog Title'),
           content: widget);
     },
   );
 }
 
-createColoredButton(context,
-    String title,
-    Color color,
-    void function(),) {
+createColoredButton(context, String title, Color color, void function(),
+    {bool? withShadow}) {
   return Container(
       height: 56,
       width: double.infinity,
@@ -26,31 +25,27 @@ createColoredButton(context,
         color: color,
         borderRadius: BorderRadius.circular(24),
       ),
-      child: ElevatedButton(
+      child: TextButton(
         onPressed: function,
-        child: Text(title,
-            style: GoogleFonts.inter(
-                textStyle: TextStyle(
-                    color: HexColor("#483F23"),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                    fontFamily: "NetflixSans"))),
+        child: Text(title, style: TextStyles.mainYellowButton),
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(color),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
-                ))),
+              borderRadius: BorderRadius.circular(25),
+            ))),
       ));
 }
 
-createColoredRowButton(context,
-    String title,
-    Color titleColor,
-    Color color,
-    double width,
-    Widget widget,
-    void function(),) {
+createColoredRowButton(
+  context,
+  String title,
+  Color titleColor,
+  Color color,
+  double width,
+  Widget widget,
+  void function(),
+) {
   return Container(
       height: 56,
       width: width,
@@ -66,25 +61,28 @@ createColoredRowButton(context,
             widget,
             Text(title,
                 style: GoogleFonts.inter(
-                    textStyle: GoogleFonts.inter(textStyle: TextStyle(
-                        color: titleColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14)))),
+                    textStyle: GoogleFonts.inter(
+                        textStyle: TextStyle(
+                            color: titleColor,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14)))),
           ],
         ),
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(color),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
-                ))),
+              borderRadius: BorderRadius.circular(25),
+            ))),
       ));
 }
 
-createOutLinedButton(context,
-    String title,
-    Color color,
-    void function(),) {
+createOutLinedButton(
+  context,
+  String title,
+  Color color,
+  void function(),
+) {
   return Container(
       height: 56,
       width: double.infinity,
@@ -105,17 +103,19 @@ createOutLinedButton(context,
             backgroundColor: MaterialStateProperty.all(color),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.black),
-                  borderRadius: BorderRadius.circular(25),
-                ))),
+              side: BorderSide(color: Colors.black),
+              borderRadius: BorderRadius.circular(25),
+            ))),
       ));
 }
 
-createTextField(BuildContext context,
-    String title,
-    String hint,
-    TextEditingController controller,
-    TextInputType inputType,) {
+createTextField(
+  BuildContext context,
+  String title,
+  String hint,
+  TextEditingController controller,
+  TextInputType inputType,
+) {
   return Container(
     height: 80,
     padding: const EdgeInsets.only(top: 10, bottom: 5),
@@ -153,14 +153,13 @@ createTextField(BuildContext context,
             padding: const EdgeInsets.only(
               left: 24,
             ),
-            child: Text(
-              title,
-              style: GoogleFonts.inter(textStyle: Theme
-                  .of(context)
-                  .textTheme
-                  .headline5!
-                  .copyWith(fontSize: 16, fontWeight: FontWeight.w600),)
-            ),
+            child: Text(title,
+                style: GoogleFonts.inter(
+                  textStyle: Theme.of(context)
+                      .textTheme
+                      .headline5!
+                      .copyWith(fontSize: 16, fontWeight: FontWeight.w600),
+                )),
           ),
         ),
       ],

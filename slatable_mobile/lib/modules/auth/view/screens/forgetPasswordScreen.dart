@@ -12,6 +12,7 @@ import 'package:slatable_mobile/modules/auth/view/components/welcomeComponents.d
 import 'package:slatable_mobile/shared/const.dart';
 import 'package:slatable_mobile/shared/ui/components/signInComponents.dart';
 import 'package:slatable_mobile/shared/ui/components/titledTextField.dart';
+import 'package:slatable_mobile/shared/ui/helper/text_styles.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   @override
@@ -25,80 +26,53 @@ class ForgetPasswordScreen extends StatelessWidget {
           return SingleChildScrollView(
             child: Container(
               height: contextHeight(context),
-              padding: EdgeInsets.symmetric(horizontal: 15),
               child: Scaffold(
-                backgroundColor: Colors.black,
-                appBar: PreferredSize(
-                  preferredSize: Size.fromHeight(107.0),
-                  // here the desired height
-                  child: AppBar(
-                      backgroundColor: Colors.black,
-                      elevation: 0,
-                      leading: BackButton(
-                        color: Colors.black,
-                      )),
-
-                  // backgroundColor: Color(0xe1f5fe).withOpacity(1.0),
-                ),
-                body: SingleChildScrollView(
-                  child: SizedBox(
-                    height: contextHeight(context) - 140,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          children: [
-                            Text(
-                              "Password Reset",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 32,
-                                  fontFamily: "NetflixSans",
-                                  color: Colors.white),
-                            ),
-                            SizedBox(height: 217,),
-                            createTextField(
-                              context,
-                              "Email Address",
-                              "Enter email address",
-                              emailController,
-                              TextInputType.text,
-                            ),
-                            createColoredButton(
-                                context,
-                                "Request Email Reset",
-                                MyColor.button,
-                                () => navTo(context, ForgetPasswordScreen())),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 45),
-                              child: Text(
-                                "If we find an account associated with this email address we’ll email a reset link to the email above.",
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.inter(textStyle: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 16,
-                                    fontFamily: "NetflixSans",
-                                    color: Colors.white),)
-                              ),
-                            )
-                          ],
+                backgroundColor: Color(0xff121419),
+                body: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: contextHeight(context) * 0.1,
+                      ),
+                      Text("Password Reset",
+                          textAlign: TextAlign.center, style: TextStyles.head1),
+                      SizedBox(
+                        height: contextHeight(context) * 0.1,
+                      ),
+                      createTextField(
+                        context,
+                        "Email Address",
+                        "Enter email address",
+                        emailController,
+                        TextInputType.emailAddress,
+                      ),
+                      SizedBox(height: contextHeight(context) * 0.01),
+                      createColoredButton(context, "Request Email Reset",
+                          MyColor.button, () {}),
+                      SizedBox(height: contextHeight(context) * 0.05),
+                      Padding(
+                        padding: const EdgeInsets.all(30.0),
+                        child: Text(
+                          'If we found an account associated with this email address we’ll email a reset link to the email above.',
+                          style: TextStyles.forgetPasswordText,
+                          textAlign: TextAlign.center,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 64),
-                          child: Text(
-                            "Tap here to get help with Sign in with Apple and Google sign in.",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 16,
-                                fontFamily: "NetflixSans",
-                                color: Colors.white),
+                      ),
+                      Expanded(
+                        child: Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Padding(
+                            padding: const EdgeInsets.all(30.0),
+                            child: Text(
+                              'Tap here to get help with Sign in with Apple and Google sign in.',
+                              style: TextStyles.forgetPasswordText,
+                              textAlign: TextAlign.center,
+                            ),
                           ),
-                        )
-
-                      ],
-                    ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),

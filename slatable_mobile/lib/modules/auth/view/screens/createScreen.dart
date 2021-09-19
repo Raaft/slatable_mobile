@@ -13,6 +13,7 @@ import 'package:slatable_mobile/shared/const.dart';
 import 'package:slatable_mobile/shared/ui/components/signInComponents.dart';
 import 'package:slatable_mobile/shared/ui/components/titledTextField.dart';
 import 'package:slatable_mobile/shared/ui/helper/back_arrow.dart';
+import 'package:slatable_mobile/shared/ui/helper/export.dart';
 
 import 'createAccInfoScreen.dart';
 
@@ -29,76 +30,67 @@ class CreateScreen extends StatelessWidget {
             child: Container(
               height: contextHeight(context),
               child: Scaffold(
-                backgroundColor: Colors.black,
-                appBar: PreferredSize(
-                  preferredSize: Size.fromHeight(107.0),
-                  // here the desired height
-                  child: back(context, Colors.black,Colors.white),
-
-                  // backgroundColor: Color(0xe1f5fe).withOpacity(1.0),
-                ),
-                body: SingleChildScrollView(
-                  child: Container(
-                    height: contextHeight(context) - 140,
-                    padding: EdgeInsets.symmetric(horizontal: 12),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Create Account",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 32,
-                              fontFamily: "NetflixSans",
-                              color: Colors.white),
-                        ),
-                        Column(
+                backgroundColor: Color(0xff121419),
+                body: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  child: ListView(
+                    children: [
+                      SizedBox(
+                        height: contextHeight(context) * 0.055,
+                      ),
+                      Text("Create Account",
+                          textAlign: TextAlign.center, style: TextStyles.head1),
+                      SizedBox(
+                        height: contextHeight(context) * 0.055,
+                      ),
+                      Column(
+                        children: [
+                          createTextField(
+                            context,
+                            "Email Address",
+                            "Enter email address",
+                            emailController,
+                            TextInputType.emailAddress,
+                          ),
+                          SizedBox(height: 8),
+                          createTextField(
+                            context,
+                            "Password",
+                            "Choose password",
+                            passwordController,
+                            TextInputType.emailAddress,
+                          ),
+                          SizedBox(height: 19),
+                          buildSwitch(
+                              "I agree to the Privacy Policy and Terms of Service",
+                              false),
+                          SizedBox(height: 31),
+                          createColoredButton(
+                              context,
+                              "Create Account",
+                              MyColor.button,
+                              () => navTo(context, CreateAccInfoScreen())),
+                          SizedBox(height: 20),
+                          Center(
+                            child: buildSwitch(
+                                "Please add me to your mailing list", true),
+                          ),
+                          SizedBox(height: contextHeight(context) * 0.1),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 50),
+                        child: Column(
                           children: [
-                            createTextField(
-                              context,
-                              "Email Address",
-                              "Enter email address",
-                              emailController,
-                              TextInputType.emailAddress,
-                            ),
-                            SizedBox(height: 8),
-                            createTextField(
-                              context,
-                              "Password",
-                              "Choose password",
-                              passwordController,
-                              TextInputType.emailAddress,
-                            ),
-                            SizedBox(height: 19),
-                            buildSwitch(
-                                "I agree to the Privacy Policy and Terms of Service"),
-                            SizedBox(height: 31),
-                            createColoredButton(
-                                context,
-                                "Create Account",
-                                MyColor.button,
-                                () => navTo(context, CreateAccInfoScreen())),
-                            SizedBox(height: 20),
-                            buildSwitch("Please add me to your mailing list"),
-                            SizedBox(height: 8),
-                            forgetPasswordButton(HexColor("E6E8EF"), context)
+                            createSignInButton(context,
+                                " Sign up with Apple button", Colors.white),
+                            SizedBox(height: 14),
+                            createSignInButton(context,
+                                " Sign in with Google button", Colors.white)
                           ],
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 50),
-                          child: Column(
-                            children: [
-                              createSignInButton(context,
-                                  " Sign up with Apple button", Colors.white),
-                              SizedBox(height: 14),
-                              createSignInButton(context,
-                                  " Sign in with Google button", Colors.white)
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
+                      )
+                    ],
                   ),
                 ),
               ),
