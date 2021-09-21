@@ -1,6 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:slatable_mobile/modules/auth/view/components/component.dart';
 import 'package:slatable_mobile/modules/home/view/Screens/addAgentScreen.dart';
@@ -10,6 +10,8 @@ import 'package:slatable_mobile/modules/home/view/Screens/headshotgallery.dart';
 import 'package:slatable_mobile/modules/home/view/Screens/slatesScreen.dart';
 
 import 'package:slatable_mobile/modules/home/view/componant/homeCompnant.dart';
+import 'package:slatable_mobile/shared/ui/components/custom_container.dart';
+import 'package:slatable_mobile/shared/ui/helper/export.dart';
 
 class InvitedAuditionAddLinksScreen extends StatelessWidget {
   const InvitedAuditionAddLinksScreen({Key? key}) : super(key: key);
@@ -20,118 +22,53 @@ class InvitedAuditionAddLinksScreen extends StatelessWidget {
         body: createBodySetting([
       buildHeadContainer(),
       Padding(
-        padding: const EdgeInsets.all(14),
+        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 25),
         child: Text(
-          "Audition information",
-          style: GoogleFonts.inter(
-              textStyle: TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.w600,
-                  color: HexColor("#898B91"))),
+          "Audition information".toUpperCase(),
+          style: TextStyles.inter11aluminumGreyMedium600,
           textAlign: TextAlign.start,
         ),
       ),
       Container(
         color: Colors.white,
-        child: Column(
-          children: [
-            ListTile(
-              title: Text("Audition Title"),
-              subtitle: Text("Apple Commercial #33"),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+          child: ListTile(
+            title: Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: Text(
+                "Audition Title",
+                style: TextStyles.inter15blackPearlMedium600,
+              ),
             ),
-            Divider(),
-            ListTile(
-              title: Text("Character Name"),
-              subtitle: Text("ANNA"),
-            ),
-          ],
+            subtitle: Text("Star Wars Ep. 5",
+                style: TextStyles.inter15blackPearlRegular500WithOpacity),
+          ),
         ),
       ),
-      Padding(
-        padding: const EdgeInsets.all(14),
-        child: Text(
-          "Contact information",
-          style: GoogleFonts.inter(
-              textStyle: TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.w600,
-                  color: HexColor("#898B91"))),
-          textAlign: TextAlign.start,
-        ),
-      ),
+      line(null, null, null, null),
       Container(
         color: Colors.white,
-        child: Column(
-          children: [
-            ListTile(
-              title: Text("Agent"),
-              trailing: IconButton(
-                  onPressed: () {navTo(context, AddAgentScreen());}, icon: Icon(Icons.arrow_forward_ios)),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+          child: ListTile(
+            title: Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: Text(
+                "Character Name",
+                style: TextStyles.inter15blackPearlMedium600,
+              ),
             ),
-            ListTile(
-              title: Text("Manager"),
-              trailing: IconButton(
-                  onPressed: () {navTo(context, AddManagerScreen());}, icon: Icon(Icons.arrow_forward_ios)),
-            ),
-            ListTile(
-              title: Text("Email"),
-              trailing: Switch(value: true, onChanged: (val) {}),
-            ),
-            ListTile(
-              title: Text("Phone number"),
-              trailing: Switch(value: true, onChanged: (val) {}),
-            ),
-          ],
+            subtitle: Text("ANNA",
+                style: TextStyles.inter15blackPearlRegular500WithOpacity),
+          ),
         ),
       ),
       Padding(
-        padding: const EdgeInsets.all(14),
+        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 25),
         child: Text(
-          "Requested from Casting",
-          style: GoogleFonts.inter(
-              textStyle: TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.w600,
-                  color: HexColor("#898B91"))),
-          textAlign: TextAlign.start,
-        ),
-      ),
-      Container(
-        color: Colors.white,
-        child: Column(
-          children: [
-            ListTile(
-              title: Text("Your headshot"),
-              trailing: IconButton(
-                  onPressed: () {navTo(context, HeadshotGallery());}, icon: Icon(Icons.arrow_forward_ios)),
-            ),
-            ListTile(
-              title: Text("Your slate"),
-              trailing: IconButton(
-                  onPressed: () {navTo(context, SlatesScreen());}, icon: Icon(Icons.arrow_forward_ios)),
-            ),
-            ListTile(
-              title: Text("Lifestyle photos"),
-              trailing: IconButton(
-                  onPressed: () {}, icon: Icon(Icons.arrow_forward_ios)),
-            ),
-            ListTile(
-              title: Text("Links"),
-              trailing: IconButton(
-                  onPressed: () {navTo(context, AddLinksForInvitedAuditionProScreen());}, icon: Icon(Icons.arrow_forward_ios)),
-            ),
-          ],
-        ),
-      ),
-      Padding(
-        padding: const EdgeInsets.all(14),
-        child: Text(
-          "Notes from Casting",
-          style: GoogleFonts.inter(
-              textStyle: TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.w600,
-                  color: HexColor("#898B91"))),
+          "Contact information".toUpperCase(),
+          style: TextStyles.inter11aluminumGreyMedium600,
           textAlign: TextAlign.start,
         ),
       ),
@@ -140,14 +77,169 @@ class InvitedAuditionAddLinksScreen extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.only(left: 10.0, right: 10),
+              child: ListTile(
+                  title: Text("Agent",
+                      style: TextStyles.inter15blackPearlMedium600),
+                  trailing: InkWell(
+                    onTap: () {
+                      navTo(context, AddAgentScreen());
+                    },
+                    child: Image.asset(
+                      AppIcons.forwardArrow,
+                      scale: 4,
+                      color: Palette.madisonBlue,
+                    ),
+                  )),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0, right: 10),
+              child: ListTile(
+                  title: Text("Manager",
+                      style: TextStyles.inter15blackPearlMedium600),
+                  trailing: InkWell(
+                    onTap: () {
+                      navTo(context, AddManagerScreen());
+                    },
+                    child: Image.asset(
+                      AppIcons.forwardArrow,
+                      scale: 4,
+                      color: Palette.madisonBlue,
+                    ),
+                  )),
+            ),
+            line(null, null, null, null),
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: ListTile(
+                trailing: CupertinoSwitch(
+                  activeColor: Palette.deepSkyBlue,
+                  value: false,
+                  onChanged: (bool value) {},
+                ),
+                title: Text(
+                  "Email",
+                  style: TextStyles.inter15blackPearlMedium600,
+                ),
+              ),
+            ),
+            line(null, null, null, null),
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: ListTile(
+                trailing: CupertinoSwitch(
+                  activeColor: Palette.deepSkyBlue,
+                  value: true,
+                  onChanged: (bool value) {},
+                ),
+                title: Text(
+                  "Phone number",
+                  style: TextStyles.inter15blackPearlMedium600,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 25),
+        child: Text(
+          "Requested from Casting".toUpperCase(),
+          style: TextStyles.inter11aluminumGreyMedium600,
+          textAlign: TextAlign.start,
+        ),
+      ),
+      Container(
+        color: Colors.white,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0, right: 12),
+              child: ListTile(
+                  title: Text("Your Headshot",
+                      style: TextStyles.inter15blackPearlMedium600),
+                  trailing: InkWell(
+                    onTap: () {
+                      navTo(context, HeadshotGallery());
+                    },
+                    child: Image.asset(
+                      AppIcons.forwardArrow,
+                      scale: 4,
+                      color: Palette.madisonBlue,
+                    ),
+                  )),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0, right: 12),
+              child: ListTile(
+                  title: Text("Your Slate",
+                      style: TextStyles.inter15blackPearlMedium600),
+                  trailing: InkWell(
+                    onTap: () {
+                      navTo(context, SlatesScreen());
+                    },
+                    child: Image.asset(
+                      AppIcons.forwardArrow,
+                      scale: 4,
+                      color: Palette.madisonBlue,
+                    ),
+                  )),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0, right: 12),
+              child: ListTile(
+                  title: Text("Lifestyle photos",
+                      style: TextStyles.inter15blackPearlMedium600),
+                  trailing: InkWell(
+                    onTap: () {},
+                    child: Image.asset(
+                      AppIcons.forwardArrow,
+                      scale: 4,
+                      color: Palette.madisonBlue,
+                    ),
+                  )),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0, right: 12),
+              child: ListTile(
+                  title: Text("Links",
+                      style: TextStyles.inter15blackPearlMedium600),
+                  trailing: InkWell(
+                    onTap: () {
+                      navTo(context, AddLinksForInvitedAuditionProScreen());
+                    },
+                    child: Image.asset(
+                      AppIcons.forwardArrow,
+                      scale: 4,
+                      color: Palette.madisonBlue,
+                    ),
+                  )),
+            ),
+          ],
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 25),
+        child: Text(
+          "Notes from Casting".toUpperCase(),
+          style: TextStyles.inter11aluminumGreyMedium600,
+          textAlign: TextAlign.start,
+        ),
+      ),
+      Container(
+        color: Colors.white,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(25),
               child: Text(
-                "We need at least 5 takes for 2 different scenes: Cry, Laugh.\n \nPlease send on time.\n\nThank you.",
-                style: TextStyle(color: Colors.grey),
+                "We need at least 5 takes for 2 different\nscenes: Cry, Laugh.\n \nPlease send on time.\n\nThank you.",
+                style: TextStyles.inter15blackPearlRegular500WithOpacity,
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 20,horizontal: 30),
+              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
               child: createColoredButton(
                   context, "Download PDF", HexColor("#C8D0E5"), () {}),
             )
@@ -159,22 +251,36 @@ class InvitedAuditionAddLinksScreen extends StatelessWidget {
 
   buildHeadContainer() {
     return Container(
-      padding: EdgeInsets.only(top: 24, right: 30, left: 30, bottom: 50),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.end,
+      padding: EdgeInsets.only(top: 50, right: 30, left: 30, bottom: 50),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Text(
-            "Invited to ",
-            style: TextStyle(fontSize: 32, fontWeight: FontWeight.w600),
+          RichText(
+            textAlign: TextAlign.left,
+            text: TextSpan(
+              children: <TextSpan>[
+                TextSpan(
+                    text: 'Invited to \n',
+                    style: TextStyles.inter32NeroMedium600),
+                TextSpan(text: 'Audition', style: TextStyles.inter32NeroBold700)
+              ],
+            ),
           ),
-          Text(
-            "Audition ",
-            style: TextStyle(fontSize: 33, fontWeight: FontWeight.w700),
-          ),
+          CustomContainer(
+              height: 45,
+              width: 80,
+              radius: 16,
+              hasBorder: true,
+              child: InkWell(
+                onTap: () {},
+                child: Center(
+                    child: Text('close',
+                        style: TextStyles.inter14blackPearlBold700)),
+              )),
         ],
       ),
-      height: 205,
+      height: 180,
       width: double.infinity,
       decoration: BoxDecoration(
           color: Colors.white,

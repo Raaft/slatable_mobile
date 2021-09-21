@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:slatable_mobile/config/colors.dart';
 
-createBodyHome(Color color,List<Widget> list, MainAxisAlignment mainAxisAlignment) {
+createBodyHome(
+    Color? color, List<Widget> list, MainAxisAlignment mainAxisAlignment,
+    {Color? containerColor}) {
   return CustomScrollView(
     slivers: [
       SliverAppBar(
@@ -16,7 +18,7 @@ createBodyHome(Color color,List<Widget> list, MainAxisAlignment mainAxisAlignmen
         delegate: SliverChildBuilderDelegate(
           (context, position) {
             return Container(
-              color: color,
+              color: color ?? HexColor("#121419"),
               child: Stack(
                 children: [
                   Container(
@@ -27,7 +29,7 @@ createBodyHome(Color color,List<Widget> list, MainAxisAlignment mainAxisAlignmen
                     ),
                     //height: MediaQuery.of(context).size.height - 100,
                     decoration: BoxDecoration(
-                        color: HexColor("#F3F6FC"),
+                        color: containerColor ?? HexColor("#F3F6FC"),
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(34),
                             topRight: Radius.circular(34))),
@@ -59,12 +61,10 @@ createBodyHome(Color color,List<Widget> list, MainAxisAlignment mainAxisAlignmen
   );
 }
 
-
-buildIconsContainer(List<Widget> list, Widget widget,Key key,context) {
+buildIconsContainer(List<Widget> list, Widget widget, Key key, context) {
   return Dismissible(
     background: Container(color: Colors.red),
     secondaryBackground: Icon(Icons.delete),
-
     key: key,
     child: Container(
       padding: const EdgeInsets.only(left: 10, right: 10),
@@ -133,7 +133,7 @@ createBodySetting(List<Widget> list, MainAxisAlignment mainAxisAlignment) {
                             topLeft: Radius.circular(34),
                             topRight: Radius.circular(34))),
                     margin: EdgeInsets.only(top: 36),
-                    padding: EdgeInsets.only(bottom: 25),
+                    // padding: EdgeInsets.only(bottom: 25),
                   ),
                   Container(
                     color: HexColor("#121419"),

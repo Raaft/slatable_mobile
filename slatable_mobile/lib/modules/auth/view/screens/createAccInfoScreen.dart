@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:slatable_mobile/config/colors.dart';
 import 'package:slatable_mobile/cubit/mainCubit/cubit.dart';
 import 'package:slatable_mobile/cubit/mainCubit/states.dart';
@@ -9,13 +8,15 @@ import 'package:slatable_mobile/modules/auth/view/components/CreateAccComponents
 import 'package:slatable_mobile/modules/auth/view/components/component.dart';
 
 import 'package:slatable_mobile/shared/const.dart';
+import 'package:slatable_mobile/shared/ui/components/custom_container.dart';
+import 'package:slatable_mobile/shared/ui/helper/export.dart';
 
 import 'managerInfoScreen.dart';
 
 class CreateAccInfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var signInFormKey = GlobalKey<FormState>();
+    // var signInFormKey = GlobalKey<FormState>();
     var emailController = TextEditingController();
     var stageNameController = TextEditingController();
     var unionAffiliationController = TextEditingController();
@@ -29,23 +30,27 @@ class CreateAccInfoScreen extends StatelessWidget {
               height: contextHeight(context),
               child: Scaffold(
                 appBar: PreferredSize(
-                  preferredSize: Size.fromHeight(107.0),
-                  // here the desired height
+                  preferredSize: Size.fromHeight(60.0),
                   child: AppBar(
-                      elevation: 0,
-                      leading: BackButton(
-                        color: Colors.black,
-                      )),
-
-                  // backgroundColor: Color(0xe1f5fe).withOpacity(1.0),
+                    elevation: 0,
+                    leading: InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Icon(
+                          Icons.keyboard_backspace,
+                          color: Palette.black,
+                        )),
+                  ),
                 ),
                 body: SingleChildScrollView(
                   child: Container(
-                    height: contextHeight(context) - 135,
+                    height: contextHeight(context) * .9,
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Column(
                       //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        verticalSpace(5),
                         createAccHead("Your Contact Info",
                             "Enter as much info as you can.\n You can always edit, add or update in \n Settings later."),
                         SizedBox(height: 22),
@@ -80,17 +85,16 @@ class CreateAccInfoScreen extends StatelessWidget {
                           emailController,
                           TextInputType.emailAddress,
                         ),
-                        SizedBox(height: 20),
+                        SizedBox(height: 10),
                         createTextAndIcon(context),
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 24),
-                          child: createColoredButton(
+                            padding: EdgeInsets.symmetric(horizontal: 24),
+                            child: createColoredButton(
                               context,
                               "Next (1/3)",
                               MyColor.button,
-                              ()=> showMyDialog(context,buildMangerDialogComp(context))
-                             )),
-
+                              () => buildMangerDialogComp(context),
+                            )),
                       ],
                     ),
                   ),
@@ -101,44 +105,32 @@ class CreateAccInfoScreen extends StatelessWidget {
         });
   }
 
-  Container buildMangerDialogComp(BuildContext context) {
-    return Container(
-                                height: 195,
-                                child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Do you have a manager?",
-                                        style: GoogleFonts.inter(
-                                            textStyle:
-                                            TextStyle(fontWeight: FontWeight.w600, fontSize: 15)),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          TextButton(
-                                              onPressed: () {},
-                                              child: Text(
-                                                "Not Yet!",
-                                                style: GoogleFonts.inter(
-                                                    textStyle: TextStyle(
-                                                        fontWeight: FontWeight.w600,
-                                                        fontSize: 15,
-                                                        color: Colors.black)),
-                                              )),
-                                          TextButton(
-                                              onPressed: () {navTo(context, ManagerInfoScreen());},
-                                              child: Text(
-                                                "Yes",
-                                                style: GoogleFonts.inter(
-                                                    textStyle: TextStyle(
-                                                        fontWeight: FontWeight.w600,
-                                                        fontSize: 15,
-                                                        color: Colors.black)),
-                                              ))
-                                        ],
-                                      )
-                                    ]));
+  Future buildMangerDialogComp(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              "Do you have a manager?",
+              textAlign: TextAlign.left,
+              style: TextStyles.causten15BlackMedium600,
+            ),
+            actions: [
+              TextButton(
+                child:
+                    Text("Not Yet!", style: TextStyles.causten15BlackMedium600),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+              TextButton(
+                child: Text("Yes", style: TextStyles.causten15BlackMedium600),
+                onPressed: () {
+                  navTo(context, ManagerInfoScreen());
+                },
+              )
+            ],
+          );
+        });
   }
 }

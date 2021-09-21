@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-
+import 'package:slatable_mobile/shared/ui/helper/export.dart';
 
 createTextAndIcon(BuildContext context) {
   return Padding(
@@ -30,35 +29,24 @@ createTextAndIcon(BuildContext context) {
 
 createAccHead(String headTitle, String subTitle) {
   return Container(
-    padding: EdgeInsets.only(right: 30, left: 30, bottom: 24),
+    padding: EdgeInsets.only(top: 5, right: 10, left: 10, bottom: 24),
     child: Column(
       //  mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Align(
           alignment: Alignment.center,
-          child: Text(
-            headTitle,
-            textAlign: TextAlign.center,
-            style: GoogleFonts.inter(textStyle: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 32,
-                fontFamily: "NetflixSans")),
-          ),
+          child: Text(headTitle,
+              textAlign: TextAlign.center,
+              style: TextStyles.inter32NeroBold700),
         ),
         SizedBox(
-          height: 40,
+          height: 30,
         ),
-        Text(
-          subTitle,
-          textAlign: TextAlign.center,
-          style: GoogleFonts.inter(textStyle: TextStyle(
-            //  fontWeight: FontWeight.w300,
-              fontSize: 16,
-              fontFamily: "NetflixSans"),)
-        )
+        Text(subTitle,
+            textAlign: TextAlign.center,
+            style: TextStyles.inter16blackRegular400WithOpacity)
       ],
     ),
   );
 }
-

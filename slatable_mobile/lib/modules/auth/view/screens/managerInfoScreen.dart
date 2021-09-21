@@ -11,6 +11,7 @@ import 'package:slatable_mobile/modules/auth/view/components/managreInfoComponen
 import 'package:slatable_mobile/modules/auth/view/screens/agentInfoScreen.dart';
 import 'package:slatable_mobile/shared/const.dart';
 import 'package:slatable_mobile/shared/ui/components/titledTextField.dart';
+import 'package:slatable_mobile/shared/ui/helper/export.dart';
 
 class ManagerInfoScreen extends StatelessWidget {
   @override
@@ -29,23 +30,27 @@ class ManagerInfoScreen extends StatelessWidget {
               height: contextHeight(context),
               child: Scaffold(
                 appBar: PreferredSize(
-                  preferredSize: Size.fromHeight(107.0),
+                  preferredSize: Size.fromHeight(60.0),
                   // here the desired height
                   child: AppBar(
                       elevation: 0,
-                      leading: IconButton(onPressed: () => navBack(context),
-                          icon: Icon(Icons.keyboard_backspace,color: Colors.black,))),
+                      leading: IconButton(
+                          onPressed: () => navBack(context),
+                          icon: Icon(
+                            Icons.keyboard_backspace,
+                            color: Colors.black,
+                          ))),
 
                   // backgroundColor: Color(0xe1f5fe).withOpacity(1.0),
                 ),
                 body: SingleChildScrollView(
                   child: Container(
-                    height: contextHeight(context) - 140,
+                    height: contextHeight(context) * .8,
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Column(
                       children: [
                         createAccHead("Manager Info",
-                            "Fill in as much as you can.You get to decide later if you want to include this info with your self tape."),
+                            "Fill in as much as you can.\nYou get to decide later if you want to\ninclude this info with your self tape."),
                         createTextField(context, "Name", "Name", nameController,
                             TextInputType.text),
                         SizedBox(height: 7.6),
@@ -65,7 +70,7 @@ class ManagerInfoScreen extends StatelessWidget {
                             "Email address",
                             emailAddressController,
                             TextInputType.text),
-                        SizedBox(height: 37),
+                        SizedBox(height: 15),
                         TextButton(
                           onPressed: () {},
                           child: Text(
@@ -77,14 +82,14 @@ class ManagerInfoScreen extends StatelessWidget {
                                     fontSize: 14, fontWeight: FontWeight.w700),
                           ),
                         ),
-                        SizedBox(height: 35),
+                        SizedBox(height: 15),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 34),
-                          child: createColoredButton(context,"Next (2/3)", MyColor.button,
-                                  () {
-                                //   navTo(context, AgentInfoScreen());
-                                    showMyDialog(context, buildAgentDialogComp(context));
-                                  }),
+                          child: createColoredButton(
+                              context,
+                              "Next (2/3)",
+                              MyColor.button,
+                              () => buildMangerDialogComp(context)),
                         )
                       ],
                     ),
@@ -97,44 +102,31 @@ class ManagerInfoScreen extends StatelessWidget {
   }
 }
 
-
- buildAgentDialogComp(BuildContext context) {
-  return Container(
-      height: 195,
-      child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Do you have a agent?",
-              style: GoogleFonts.inter(
-                  textStyle:
-                  TextStyle(fontWeight: FontWeight.w600, fontSize: 15)),
+Future buildMangerDialogComp(BuildContext context) {
+  return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            "Do you have a agent?",
+            textAlign: TextAlign.left,
+            style: TextStyles.causten15BlackMedium600,
+          ),
+          actions: [
+            TextButton(
+              child:
+                  Text("Not Yet!", style: TextStyles.causten15BlackMedium600),
+              onPressed: () {
+                Navigator.pop(context);
+              },
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      "Not Yet!",
-                      style: GoogleFonts.inter(
-                          textStyle: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 15,
-                              color: Colors.black)),
-                    )),
-                TextButton(
-                    onPressed: () {navTo(context, AgentInfoScreen());},
-                    child: Text(
-                      "Yes",
-                      style: GoogleFonts.inter(
-                          textStyle: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 15,
-                              color: Colors.black)),
-                    ))
-              ],
+            TextButton(
+              child: Text("Yes", style: TextStyles.causten15BlackMedium600),
+              onPressed: () {
+                navTo(context, AgentInfoScreen());
+              },
             )
-          ]));
+          ],
+        );
+      });
 }

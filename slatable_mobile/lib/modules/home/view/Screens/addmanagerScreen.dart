@@ -1,5 +1,4 @@
-
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,6 +7,8 @@ import 'package:slatable_mobile/modules/auth/view/components/component.dart';
 import 'package:slatable_mobile/modules/home/view/Screens/settingsScreen.dart';
 
 import 'package:slatable_mobile/modules/home/view/componant/homeCompnant.dart';
+import 'package:slatable_mobile/shared/ui/components/custom_container.dart';
+import 'package:slatable_mobile/shared/ui/helper/export.dart';
 
 class AddManagerScreen extends StatelessWidget {
   const AddManagerScreen({Key? key}) : super(key: key);
@@ -16,75 +17,104 @@ class AddManagerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: createBodySetting([
-          buildHeadContainer(),
-          Padding(
-            padding: const EdgeInsets.all(14),
-            child: Text(
-              "Manager information",
-              style: GoogleFonts.inter(
-                  textStyle: TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
-                      color: HexColor("#898B91"))),
-              textAlign: TextAlign.start,
+      buildHeadContainer(),
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 25),
+        child: Text(
+          "include Manager?",
+          style: TextStyles.inter11aluminumGreyMedium600,
+          textAlign: TextAlign.start,
+        ),
+      ),
+      Container(
+        color: Colors.white,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: ListTile(
+                trailing: CupertinoSwitch(
+                  activeColor: Palette.deepSkyBlue,
+                  value: false,
+                  onChanged: (bool value) {},
+                ),
+                title: Text(
+                  "Yes/No",
+                  style: TextStyles.inter15blackPearlMedium600,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 25),
+        child: Text(
+          "Managers".toUpperCase(),
+          style: GoogleFonts.inter(
+              textStyle: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  color: HexColor("#898B91"))),
+          textAlign: TextAlign.start,
+        ),
+      ),
+      Container(
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 10.0),
+          child: ListTile(
+            leading: Radio(
+              activeColor: Palette.black,
+              value: '',
+              groupValue: '',
+              onChanged: (value) {},
+            ),
+            trailing: CustomContainer(
+              height: 48,
+              width: 48,
+              radius: 16,
+              hasBorder: true,
+              child: InkWell(
+                child: Image.asset(
+                  AppIcons.edit,
+                  scale: 4,
+                ),
+              ),
+            ),
+            title: Text(
+              "Company",
+              style: TextStyles.inter15blackPearlMedium600,
+            ),
+            subtitle: Text(
+              "Wade Warren",
+              style: TextStyles.inter15blackPearlRegular500WithOpacity,
             ),
           ),
-          Container(
-            color: Colors.white,
-            child: Column(
-              children: [
-                ListTile(
-                  title: Text("Name"),
-                  subtitle: Text("Name"),
-                ),
-                ListTile(
-                  title: Text("Company"),
-                  subtitle: Text("Company"),
-                ),
-                ListTile(
-                  title: Text("Email address"),
-                  subtitle: Text("Email address"),
-                ),
-                ListTile(
-                  title: Text("Phone number"),
-                  subtitle: Text("Phone number"),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: 130),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-            child: createColoredButton(
-                context, "Save Links", HexColor("#DEF0D8"), () {}),
-          )
-        ], MainAxisAlignment.start));
+        ),
+      ),
+      SizedBox(height: 210),
+      Padding(
+        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+        child: createColoredButton(
+            context, "+ Add Manager", Palette.creamBruleeYellow, () {}),
+      )
+    ], MainAxisAlignment.start));
   }
 
   buildHeadContainer() {
     return Container(
       padding: EdgeInsets.only(top: 24, right: 30, left: 30, bottom: 50),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          InkWell(onTap: () {}, child: Icon(Icons.keyboard_backspace)),
           Text(
-            "Add Manager",
+            "Manager",
+            textAlign: TextAlign.left,
             style: TextStyle(fontSize: 32, fontWeight: FontWeight.w600),
           ),
-          Container(
-            height: 48,
-            width: 48,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(13),
-                border: Border.all(color: Colors.grey)
-            ),
-            child: IconButton(
-                onPressed: () {
-                },
-                icon: Image.asset("assets/icons/edit.png")),
-          ),
-
         ],
       ),
       height: 205,

@@ -7,6 +7,7 @@ import 'package:slatable_mobile/modules/auth/view/screens/createScreen.dart';
 import 'package:slatable_mobile/modules/auth/view/screens/forgetPasswordScreen.dart';
 import 'package:slatable_mobile/modules/auth/view/screens/signInScreen.dart';
 import 'package:slatable_mobile/shared/ui/components/titledTextField.dart';
+import 'package:slatable_mobile/shared/ui/helper/text_styles.dart';
 
 import 'component.dart';
 
@@ -19,7 +20,7 @@ Widget buildWelcomeButtons(context) {
         children: [
           createColoredButton(context, "Create Account", MyColor.button,
               () => navTo(context, CreateScreen())),
-         SizedBox(height: 9),
+          SizedBox(height: 9),
           createOutLinedButton(
             context,
             "Sign In",
@@ -27,35 +28,35 @@ Widget buildWelcomeButtons(context) {
             () => navTo(context, SignInScreen()),
           ),
           SizedBox(height: 9),
-          forgetPasswordButton(HexColor("#88898C"),context)
+          forgetPasswordButton(HexColor("#88898C"), context)
         ],
       ),
     ),
   );
 }
 
-
-
-forgetPasswordButton(Color color,context) {
+forgetPasswordButton(Color color, context) {
   return TextButton(
-    onPressed: () {navTo(context, ForgetPasswordScreen());},
-    child: Text("Forgot your password?",
-        style:GoogleFonts.inter(textStyle:  TextStyle(
+    onPressed: () {
+      navTo(context, ForgetPasswordScreen());
+    },
+    child: Text("Forgot password?",
+        style: GoogleFonts.inter(
+            textStyle: TextStyle(
           color: color,
-          fontWeight: FontWeight.w400,
-          fontSize: 16,
+          fontWeight: FontWeight.w700,
+          fontSize: 15,
         ))),
   );
 }
 
-Text buildWelcomeText() {
-  return Text(
-    "Create and share Pro self tapes in seconds.",
-    textAlign: TextAlign.center,
-    style: GoogleFonts.inter(
-      textStyle: TextStyle(
-          fontWeight: FontWeight.w600, fontSize: 29)
-
+Widget buildWelcomeText() {
+  return Padding(
+    padding: const EdgeInsets.all(20.0),
+    child: Text(
+      "Create and share Pro self tapes in seconds.",
+      textAlign: TextAlign.center,
+      style: TextStyles.causten29BlackMedium600,
     ),
   );
 }
@@ -74,15 +75,13 @@ Row buildWelcomeHead() {
         ),
       ),
       SizedBox(width: 20),
-      Text(
-        "Slatable",
-        style: GoogleFonts.inter(
-          textStyle: TextStyle(
+      Text("Slatable",
+          style: GoogleFonts.inter(
+            textStyle: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 40,
-              ),
-        )
-      )
+            ),
+          ))
     ],
   );
 }

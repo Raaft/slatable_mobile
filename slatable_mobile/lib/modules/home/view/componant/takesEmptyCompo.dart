@@ -7,6 +7,8 @@ import 'package:slatable_mobile/modules/home/view/Screens/invitedAuditionAddLink
 import 'package:slatable_mobile/modules/home/view/Screens/newAudition.dart';
 import 'package:slatable_mobile/modules/home/view/Screens/settingsScreen.dart';
 import 'package:slatable_mobile/modules/home/view/Screens/takesPopulatedScreen.dart';
+import 'package:slatable_mobile/shared/ui/components/custom_container.dart';
+import 'package:slatable_mobile/shared/ui/helper/export.dart';
 
 buildHeadContainer(context) {
   return Container(
@@ -21,32 +23,48 @@ buildHeadContainer(context) {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                IconButton(
-                    onPressed: () => navBack(context),
-                    icon: Icon(Icons.keyboard_backspace, color: Colors.black)),
+                InkWell(
+                  onTap: () {
+                    navBack(context);
+                  },
+                  child: Icon(Icons.keyboard_backspace, color: Colors.black),
+                ),
+                verticalSpace(15),
                 Text(
                   "Star Wars\nEp.5",
                   style: GoogleFonts.inter(
                       textStyle:
-                      TextStyle(fontSize: 30, fontWeight: FontWeight.w600)),
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.w600)),
                 ),
+                SizedBox(height: 4),
                 Text("BANDO FETT",
                     style: GoogleFonts.inter(
                         textStyle: TextStyle(
                             fontSize: 15, fontWeight: FontWeight.w500))),
                 Row(
                   children: [
-                    Text("Scenes (6) >",
-                        style: GoogleFonts.inter(
-                            textStyle: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.w700))),Text("Takes (0)",
-                        style: GoogleFonts.inter(
-                            textStyle: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.w500))),
+                    RichText(
+                      textAlign: TextAlign.left,
+                      text: TextSpan(
+                        children: <TextSpan>[
+                          TextSpan(
+                              text: 'Scenes 1 ',
+                              style: TextStyles.inter15blackPearlBold700),
+                          TextSpan(
+                              text: ' > ',
+                              style: TextStyles.inter15blackPearlRegular500),
+                          TextSpan(
+                              text: ' Takes (0)',
+                              style: TextStyles.inter15blackPearlRegular500),
+                        ],
+                      ),
+                    ),
                     SizedBox(width: 20),
                     IconButton(
                       onPressed: () {},
-                      icon: Icon(Icons.help_outline_outlined,color: Colors.grey,
+                      icon: Icon(
+                        Icons.help_outline_outlined,
+                        color: Palette.spindleBlue,
                       ),
                     )
                   ],
@@ -56,38 +74,36 @@ buildHeadContainer(context) {
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text("Draft",
-                    style:
-                    TextStyle(fontSize: 15, fontWeight: FontWeight.normal)),
-                SizedBox(height: 15),
-
-                Container(
-                  height: 48,
-                  width: 48,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(13),
-                      border: Border.all(color: Colors.grey)
-                  ),
-                  child: IconButton(
+                Text("INVITED", style: TextStyles.inter11MadisonBlueMedium600),
+                SizedBox(height: 20),
+                CustomContainer(
+                    height: 48,
+                    width: 48,
+                    radius: 16,
+                    color: Colors.transparent,
+                    hasBorder: true,
+                    child: IconButton(
                       onPressed: () {
                         navTo(context, InvitedAuditionAddLinksScreen());
                       },
-                      icon: Image.asset("assets/icons/edit.png")),
-                ),
+                      icon: Image.asset("assets/icons/edit.png"),
+                    )),
                 SizedBox(height: 15),
-                Container(
-                  height: 48,
-                  width: 48,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(13),
-                      border: Border.all(color: Colors.grey)
-                  ),
-                  child:       IconButton(
-                      onPressed: () {navTo(context, NewAudition());},
-                      icon: Image.asset("assets/icons/external_link.png")),
-
-                ),
-
+                CustomContainer(
+                    height: 48,
+                    width: 48,
+                    radius: 16,
+                    color: Colors.transparent,
+                    hasBorder: true,
+                    child: IconButton(
+                      onPressed: () {
+                        navTo(context, NewAudition());
+                      },
+                      icon: Image.asset(
+                        "assets/icons/external_link.png",
+                        color: Palette.blackPearl.withOpacity(.5),
+                      ),
+                    )),
               ],
             ),
           ],
@@ -98,11 +114,11 @@ buildHeadContainer(context) {
     height: 240,
     width: double.infinity,
     decoration: BoxDecoration(
-      //  color: Colors.white,
+        //  color: Colors.white,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(34),
-          topRight: Radius.circular(34),
-        )),
+      topLeft: Radius.circular(34),
+      topRight: Radius.circular(34),
+    )),
   );
 }
 
@@ -110,7 +126,7 @@ Widget buildButtons(BuildContext context) {
   return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           createColoredRowButton(
               context,
@@ -124,30 +140,36 @@ Widget buildButtons(BuildContext context) {
               ), () {
             navTo(context, TakesPopulated());
           }),
-          CircleAvatar(
-            backgroundColor: Colors.white,
-            radius: 30,
-            child: Image.asset(
-              "assets/icons/microphone.png",scale: 4,
-              height: 28,
+          CustomContainer(
+            height: 56,
+            width: 56,
+            radius: 24,
+            child: InkWell(
+              onTap: () {},
+              child: Image.asset("assets/icons/microphone.png",
+                  scale: 4, height: 28),
             ),
           ),
-          CircleAvatar(
-            backgroundColor: Colors.white,
-            radius: 30,
-            child: Image.asset(
-              "assets/icons/dawnload.png",scale: 4,
-              height: 22,
+          CustomContainer(
+            height: 56,
+            width: 56,
+            radius: 24,
+            child: InkWell(
+              onTap: () {},
+              child: Image.asset("assets/icons/dawnload.png",
+                  scale: 4, height: 28),
             ),
           ),
-          CircleAvatar(
-            backgroundColor: Colors.white,
-            radius: 30,
-            child: Image.asset(
-              "assets/icons/heart.png",scale: 4,
-              height: 28,
+          CustomContainer(
+            height: 56,
+            width: 56,
+            radius: 24,
+            child: InkWell(
+              onTap: () {},
+              child:
+                  Image.asset("assets/icons/heart.png", scale: 4, height: 28),
             ),
-          ),
+          )
         ],
       ));
 }

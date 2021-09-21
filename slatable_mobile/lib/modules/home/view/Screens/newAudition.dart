@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:hexcolor/hexcolor.dart';
-import 'package:slatable_mobile/config/colors.dart';
 import 'package:slatable_mobile/modules/auth/view/components/component.dart';
 
 import 'package:slatable_mobile/modules/home/view/componant/homeCompnant.dart';
+import 'package:slatable_mobile/shared/ui/components/custom_container.dart';
+import 'package:slatable_mobile/shared/ui/helper/export.dart';
 
 class NewAudition extends StatelessWidget {
   const NewAudition({Key? key}) : super(key: key);
@@ -17,180 +16,111 @@ class NewAudition extends StatelessWidget {
         body: createBodySetting([
       buildHeadContainer(),
       Padding(
-        padding: const EdgeInsets.all(14),
+        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 25),
         child: Text(
-          "Audition information",
-          style: GoogleFonts.inter(
-              textStyle: TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.w600,
-                  color: HexColor("#898B91"))),
+          "Audition information".toUpperCase(),
+          style: TextStyles.inter11aluminumGreyMedium600,
           textAlign: TextAlign.start,
         ),
       ),
       Container(
         color: Colors.white,
-        child: ListTile(
-          title: Text("Audition Title"),
-          subtitle: Text("Star Wars Ep. 5"),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+          child: ListTile(
+            title: Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: Text(
+                "Audition Title",
+                style: TextStyles.inter15blackPearlMedium600,
+              ),
+            ),
+            subtitle: Text("Star Wars Ep. 5",
+                style: TextStyles.inter15blackPearlRegular500WithOpacity),
+          ),
         ),
       ),
+      line(null, null, null, null),
       Container(
         color: Colors.white,
-        child: ListTile(
-          title: Text("Character Name"),
-          subtitle: Text("ANNA"),
-        ),
-      ),
-      Padding(
-        padding: const EdgeInsets.all(14),
-        child: Text(
-          "Contact information",
-          style:  GoogleFonts.inter(
-              textStyle: TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.w600,
-                  color: HexColor("#898B91"))),
-          textAlign: TextAlign.start,
-        ),
-      ),
-      Container(
-          color: Colors.white,
-          child: Column(
-            children: [
-              ListTile(
-                  title: Text("Manager"),
-                  trailing: IconButton(
-                      onPressed: () {}, icon: Icon(Icons.arrow_forward_ios))),
-              ListTile(
-                trailing: Switch(onChanged: (va) {}, value: false),
-                title: Text("Email"),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+          child: ListTile(
+            title: Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: Text(
+                "Character Name",
+                style: TextStyles.inter15blackPearlMedium600,
               ),
-              ListTile(
-                trailing: Switch(onChanged: (va) {}, value: false),
-                title: Text("Phone number"),
+            ),
+            subtitle: Text("ANNA",
+                style: TextStyles.inter15blackPearlRegular500WithOpacity),
+          ),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 25),
+        child: Text(
+          "Contact information".toUpperCase(),
+          style: TextStyles.inter11aluminumGreyMedium600,
+          textAlign: TextAlign.start,
+        ),
+      ),
+      Container(
+          color: Colors.white,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0, right: 10),
+                child: ListTile(
+                    title: Text("Manager",
+                        style: TextStyles.inter15blackPearlMedium600),
+                    trailing: InkWell(
+                      onTap: () {},
+                      child: Image.asset(
+                        AppIcons.forwardArrow,
+                        scale: 4,
+                        color: Palette.madisonBlue,
+                      ),
+                    )),
               ),
-            ],
-          )),
-      Padding(
-        padding: const EdgeInsets.all(14),
-        child: Text(
-          "PRO Title Card settings",
-          style:  GoogleFonts.inter(
-              textStyle: TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.w600,
-                  color: HexColor("#898B91"))),
-          textAlign: TextAlign.start,
-        ),
-      ),
-      Container(
-          color: Colors.white,
-          child: Column(
-            children: [
-              ListTile(
-                  title: Text("Headshot"),
-                  leading: Container(
-                    alignment: Alignment.center,
-
-                    height: 17,
-                    width: 39,
-                    child: Text(
-                      "PRO",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 11, color: Colors.white),
-                    ),
-                    decoration: BoxDecoration(
-                        color: Colors.deepPurple,
-                        borderRadius: BorderRadius.circular(34)),
+              line(null, null, null, null),
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: ListTile(
+                  trailing: CupertinoSwitch(
+                    activeColor: Palette.deepSkyBlue,
+                    value: false,
+                    onChanged: (bool value) {},
                   ),
-                  trailing: IconButton(
-                      onPressed: () {}, icon: Icon(Icons.arrow_forward_ios))),
-              ListTile(
-                  title: Text("Slate"),
-                  leading: Container(
-                    alignment: Alignment.center,
-
-                    height: 17,
-                    width: 39,
-                    child: Text(
-                      "PRO",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 11, color: Colors.white),
-                    ),
-                    decoration: BoxDecoration(
-                        color: Colors.deepPurple,
-                        borderRadius: BorderRadius.circular(34)),
+                  title: Text(
+                    "Email",
+                    style: TextStyles.inter15blackPearlMedium600,
                   ),
-                  trailing: IconButton(
-                      onPressed: () {}, icon: Icon(Icons.arrow_forward_ios))),
-            ],
-          )),
-      Padding(
-        padding: const EdgeInsets.all(14),
-        child: Text(
-          "Tape preferences",
-          style:  GoogleFonts.inter(
-              textStyle: TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.w600,
-                  color: HexColor("#898B91"))),
-          textAlign: TextAlign.start,
-        ),
-      ),
-      Container(
-          color: Colors.white,
-          child: Column(
-            children: [
-              ListTile(
-                  title: Text("Title cards"),
-                  leading: Container(
-                    alignment: Alignment.center,
-
-                    height: 17,
-                    width: 39,
-                    child: Text(
-                      "PRO",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 11, color: Colors.white),
-                    ),
-                    decoration: BoxDecoration(
-                        color: Colors.deepPurple,
-                        borderRadius: BorderRadius.circular(34)),
-                  ),
-                  trailing: IconButton(
-                      onPressed: () {}, icon: Icon(Icons.arrow_forward_ios))),
-              ListTile(
-                  title: Text("Transitions"),
-                  leading: Container(
-                    alignment: Alignment.center,
-
-                    height: 17,
-                    width: 39,
-                    child: Text(
-                      "PRO",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 11, color: Colors.white),
-                    ),
-                    decoration: BoxDecoration(
-                        color: Colors.deepPurple,
-                        borderRadius: BorderRadius.circular(34)),
-                  ),
-                  trailing: Switch(
+                ),
+              ),
+              line(null, null, null, null),
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: ListTile(
+                  trailing: CupertinoSwitch(
+                    activeColor: Palette.deepSkyBlue,
                     value: true,
                     onChanged: (bool value) {},
-                  )),
+                  ),
+                  title: Text(
+                    "Phone number",
+                    style: TextStyles.inter15blackPearlMedium600,
+                  ),
+                ),
+              ),
             ],
           )),
       Padding(
-        padding: const EdgeInsets.all(14),
+        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 25),
         child: Text(
-          "AUDITIONDROP",
-          style:  GoogleFonts.inter(
-              textStyle: TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.w600,
-                  color: HexColor("#898B91"))),
+          "PRO Title Card settings",
+          style: TextStyles.inter11aluminumGreyMedium600,
           textAlign: TextAlign.start,
         ),
       ),
@@ -198,29 +128,172 @@ class NewAudition extends StatelessWidget {
           color: Colors.white,
           child: Column(
             children: [
-              ListTile(
-                  title: Text("Links"),
-                  leading: Container(
-                    alignment: Alignment.center,
-                    height: 17,
-                    width: 39,
-                    child: Text(
-                      "PRO",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 11, color: Colors.white),
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0, right: 12),
+                child: ListTile(
+                    title: Text("Headshot",
+                        style: TextStyles.inter15blackPearlMedium600),
+                    leading: Container(
+                      alignment: Alignment.center,
+                      height: 17,
+                      width: 39,
+                      child: Text(
+                        "PRO",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 11, color: Colors.white),
+                      ),
+                      decoration: BoxDecoration(
+                          color: Colors.deepPurple,
+                          borderRadius: BorderRadius.circular(34)),
                     ),
-                    decoration: BoxDecoration(
-                        color: Colors.deepPurple,
-                        borderRadius: BorderRadius.circular(34)),
-                  ),
-                  trailing: IconButton(
-                      onPressed: () {}, icon: Icon(Icons.arrow_forward_ios))),
+                    trailing: InkWell(
+                      onTap: () {},
+                      child: Image.asset(
+                        AppIcons.forwardArrow,
+                        scale: 4,
+                        color: Palette.madisonBlue,
+                      ),
+                    )),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0, right: 12),
+                child: ListTile(
+                    title: Text("Slate",
+                        style: TextStyles.inter15blackPearlMedium600),
+                    leading: Container(
+                      alignment: Alignment.center,
+                      height: 17,
+                      width: 39,
+                      child: Text(
+                        "PRO",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 11, color: Colors.white),
+                      ),
+                      decoration: BoxDecoration(
+                          color: Colors.deepPurple,
+                          borderRadius: BorderRadius.circular(34)),
+                    ),
+                    trailing: InkWell(
+                      onTap: () {},
+                      child: Image.asset(
+                        AppIcons.forwardArrow,
+                        scale: 4,
+                        color: Palette.madisonBlue,
+                      ),
+                    )),
+              ),
             ],
           )),
       Padding(
-        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 25),
+        child: Text(
+          "Tape preferences",
+          style: TextStyles.inter11aluminumGreyMedium600,
+          textAlign: TextAlign.start,
+        ),
+      ),
+      Container(
+          color: Colors.white,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0, right: 12),
+                child: ListTile(
+                    title: Text("Title cards",
+                        style: TextStyles.inter15blackPearlMedium600),
+                    leading: Container(
+                      alignment: Alignment.center,
+                      height: 17,
+                      width: 39,
+                      child: Text(
+                        "PRO",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 11, color: Colors.white),
+                      ),
+                      decoration: BoxDecoration(
+                          color: Colors.deepPurple,
+                          borderRadius: BorderRadius.circular(34)),
+                    ),
+                    trailing: InkWell(
+                      onTap: () {},
+                      child: Image.asset(
+                        AppIcons.forwardArrow,
+                        scale: 4,
+                        color: Palette.madisonBlue,
+                      ),
+                    )),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: ListTile(
+                    title: Text("Transitions",
+                        style: TextStyles.inter15blackPearlMedium600),
+                    leading: Container(
+                      alignment: Alignment.center,
+                      height: 17,
+                      width: 39,
+                      child: Text(
+                        "PRO",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 11, color: Colors.white),
+                      ),
+                      decoration: BoxDecoration(
+                          color: Colors.deepPurple,
+                          borderRadius: BorderRadius.circular(34)),
+                    ),
+                    trailing: CupertinoSwitch(
+                      activeColor: Palette.deepSkyBlue,
+                      value: true,
+                      onChanged: (bool value) {},
+                    )),
+              ),
+            ],
+          )),
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 25),
+        child: Text(
+          "AUDITIONDROP",
+          style: TextStyles.inter11aluminumGreyMedium600,
+          textAlign: TextAlign.start,
+        ),
+      ),
+      Container(
+          color: Colors.white,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0, right: 12),
+                child: ListTile(
+                    title: Text("Links",
+                        style: TextStyles.inter15blackPearlMedium600),
+                    leading: Container(
+                      alignment: Alignment.center,
+                      height: 17,
+                      width: 39,
+                      child: Text(
+                        "PRO",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 11, color: Colors.white),
+                      ),
+                      decoration: BoxDecoration(
+                          color: Colors.deepPurple,
+                          borderRadius: BorderRadius.circular(34)),
+                    ),
+                    trailing: InkWell(
+                      onTap: () {},
+                      child: Image.asset(
+                        AppIcons.forwardArrow,
+                        scale: 4,
+                        color: Palette.madisonBlue,
+                      ),
+                    )),
+              ),
+            ],
+          )),
+      Padding(
+        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         child: createColoredButton(
-            context, "Save Audition", HexColor("#DEF0D8"), () {}),
+            context, "Save Audition", Palette.taraGreen, () {}),
       )
     ], MainAxisAlignment.start));
   }
@@ -232,40 +305,28 @@ class NewAudition extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text(
-                "Edit",
-                style: TextStyle(fontSize: 32, fontWeight: FontWeight.w600),
-              ),
-              Text("Audition",
-                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.w500)),
-            ],
-          ),
-          Container(
-            height: 44,
-            width: 80,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(22)),
-            child: OutlinedButton(
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.white),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                    side: BorderSide(color: Colors.black),
-                    borderRadius: BorderRadius.circular(22),
-                  ))),
-              onPressed: () {},
-              child: Text(
-                "Close",
-                style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.black),
-              ),
+          RichText(
+            textAlign: TextAlign.left,
+            text: TextSpan(
+              children: <TextSpan>[
+                TextSpan(
+                    text: 'Edit\n', style: TextStyles.inter32NeroRegular400),
+                TextSpan(
+                    text: 'Audition', style: TextStyles.inter32NeroMedium600)
+              ],
             ),
-          )
+          ),
+          CustomContainer(
+              height: 45,
+              width: 80,
+              radius: 16,
+              hasBorder: true,
+              child: InkWell(
+                onTap: () {},
+                child: Center(
+                    child: Text('close',
+                        style: TextStyles.inter14blackPearlBold700)),
+              )),
         ],
       ),
       height: 205,

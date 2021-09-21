@@ -61,7 +61,7 @@ class CreateScreen extends StatelessWidget {
                             TextInputType.emailAddress,
                           ),
                           SizedBox(height: 19),
-                          buildSwitch(
+                          BuildSwitch(
                               "I agree to the Privacy Policy and Terms of Service",
                               false),
                           SizedBox(height: 31),
@@ -72,7 +72,7 @@ class CreateScreen extends StatelessWidget {
                               () => navTo(context, CreateAccInfoScreen())),
                           SizedBox(height: 20),
                           Center(
-                            child: buildSwitch(
+                            child: BuildSwitch(
                                 "Please add me to your mailing list", true),
                           ),
                           SizedBox(height: contextHeight(context) * 0.1),

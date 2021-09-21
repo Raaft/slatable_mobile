@@ -77,7 +77,7 @@ class SignInScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               createSignInButton(context,
-                                  " Sign up with Apple button", Colors.white),
+                                  " Sign in with Apple button", Colors.white),
                               SizedBox(height: 14),
                               createSignInButton(context,
                                   " Sign in with Google button", Colors.white)

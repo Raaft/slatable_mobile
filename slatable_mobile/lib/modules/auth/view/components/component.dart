@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -16,7 +17,7 @@ Future<void> showMyDialog(context, Widget widget) async {
   );
 }
 
-createColoredButton(context, String title, Color color, void function(),
+createColoredButton(context, String title, Color color, void function()?,
     {bool? withShadow}) {
   return Container(
       height: 56,
@@ -129,14 +130,14 @@ createTextField(
           alignment: Alignment.bottomCenter,
           child: Container(
             height: 55,
-            padding: const EdgeInsets.only(left: 13),
+            padding: const EdgeInsets.only(top: 15, left: 13),
             child: TextFormField(
               controller: controller,
               keyboardType: inputType,
               autocorrect: true,
               enableSuggestions: true,
               decoration: InputDecoration(
-                  hintStyle: TextStyle(height: .5),
+                  hintStyle: TextStyles.inter15BlackPearlRegular500WithOpacity,
                   hintText: hint,
                   border: OutlineInputBorder(
                     borderSide: BorderSide.none,
@@ -152,13 +153,14 @@ createTextField(
           child: Padding(
             padding: const EdgeInsets.only(
               left: 24,
+              top: 5,
             ),
             child: Text(title,
                 style: GoogleFonts.inter(
                   textStyle: Theme.of(context)
                       .textTheme
                       .headline5!
-                      .copyWith(fontSize: 16, fontWeight: FontWeight.w600),
+                      .copyWith(fontSize: 15, fontWeight: FontWeight.w600),
                 )),
           ),
         ),

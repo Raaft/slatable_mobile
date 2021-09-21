@@ -10,16 +10,16 @@ class HomeLightEmptyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: createBodyHome(HexColor("#F3F6FC"),[
-        buildHead(context),
-        SizedBox(height: 92),
-        buildBody(),
-        SizedBox(height: 140),
-        buildButton(context),
-
-      ],MainAxisAlignment.spaceBetween),
+      body: createBodyHome(
+          null,
+          [
+            buildHead(context),
+            SizedBox(height: 92),
+            buildBody(),
+            SizedBox(height: 80),
+            buildButton(context),
+          ],
+          MainAxisAlignment.spaceBetween),
     );
   }
-
-
 }

@@ -5,6 +5,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:slatable_mobile/modules/auth/view/components/component.dart';
 
 import 'package:slatable_mobile/modules/home/view/componant/homeCompnant.dart';
+import 'package:slatable_mobile/shared/ui/helper/palette.dart';
 
 class HeadshotGallery extends StatelessWidget {
   const HeadshotGallery({Key? key}) : super(key: key);
@@ -15,80 +16,29 @@ class HeadshotGallery extends StatelessWidget {
         body: createBodySetting([
       buildHeadContainer(),
       Container(
-        height: 600,
-        child: GridView.count(
-          primary: false,
+        height: 420,
+        child: GridView.builder(
           padding: const EdgeInsets.all(20),
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-          crossAxisCount: 2,
-          children: <Widget>[
-            Container(
-              padding: const EdgeInsets.all(8),
+          primary: false,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+          ),
+          itemCount: 6,
+          itemBuilder: (BuildContext context, int index) => Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Container(
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
             ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-            ),
-
-          ],
+          ),
         ),
+      ),
+      Padding(
+        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+        child: createColoredButton(
+            context, "+ New Headshot", Palette.creamBruleeYellow, () {}),
       )
     ], MainAxisAlignment.start));
   }
@@ -96,27 +46,16 @@ class HeadshotGallery extends StatelessWidget {
   buildHeadContainer() {
     return Container(
       padding: EdgeInsets.only(top: 24, right: 30, left: 30, bottom: 50),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          InkWell(onTap: () {}, child: Icon(Icons.keyboard_backspace)),
           Text(
             "My Headshots",
+            textAlign: TextAlign.left,
             style: TextStyle(fontSize: 32, fontWeight: FontWeight.w600),
           ),
-          Container(
-            height: 48,
-            width: 48,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(13),
-                border: Border.all(color: Colors.grey)
-            ),
-            child: IconButton(
-                onPressed: () {
-                },
-                icon: Image.asset("assets/icons/edit.png")),
-          ),
-
         ],
       ),
       height: 205,

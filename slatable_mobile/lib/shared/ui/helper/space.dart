@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:slatable_mobile/shared/ui/helper/palette.dart';
 
 Widget verticalSpace(double size) => SizedBox(height: size);
 
@@ -13,6 +14,18 @@ Widget topBottomPadding(
       padding: EdgeInsets.only(top: top, bottom: bottom, left: left),
       child: child);
 }
+
+Widget line(double? height, double? width, double? radius, Color? color) =>
+    Container(
+      width: width ?? double.infinity,
+      height: height ?? 1,
+      decoration: BoxDecoration(
+        color: color ?? Palette.lavenderBlue.withOpacity(.3),
+        borderRadius: BorderRadius.all(
+          Radius.circular(radius ?? 10),
+        ),
+      ),
+    );
 
 class HorizontalPadding extends StatelessWidget {
   final double horizontal;

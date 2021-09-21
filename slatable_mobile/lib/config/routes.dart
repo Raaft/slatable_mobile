@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:slatable_mobile/modules/auth/view/screens/createAccInfoScreen.dart';
 import 'package:slatable_mobile/modules/auth/view/screens/managerInfoScreen.dart';
 import 'package:slatable_mobile/modules/auth/view/screens/welcomeScreen.dart';
+import 'package:slatable_mobile/modules/home/view/Screens/addLinksForInvitedAuditionFreeVersion.dart';
 
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -19,6 +20,9 @@ class AppRouter {
     switch (settings.name) {
       case "/welcomeScreen":
         return pageRouteBuilder(WelcomeScreen());
+
+      case "/addLinksForInvitedAuditionFreeScreen":
+        return pageRouteBuilder(AddLinksForInvitedAuditionFreeScreen());
       case "/createAccScreen":
         return pageRouteBuilder(CreateAccInfoScreen());
       case "/managerInfoScreen":
@@ -31,7 +35,8 @@ class AppRouter {
 
 class Routes {
   static String welcomeScreen = "/welcomeScreen";
+  static String addLinksForInvitedAuditionFreeScreen =
+      "/addLinksForInvitedAuditionFreeScreen";
   static String createAccScreen = "/createAccScreen";
   static String managerInfoScreen = "/managerInfoScreen";
-
 }

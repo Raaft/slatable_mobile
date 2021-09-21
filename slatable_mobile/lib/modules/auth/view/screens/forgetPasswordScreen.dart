@@ -52,9 +52,9 @@ class ForgetPasswordScreen extends StatelessWidget {
                           MyColor.button, () {}),
                       SizedBox(height: contextHeight(context) * 0.05),
                       Padding(
-                        padding: const EdgeInsets.all(30.0),
+                        padding: const EdgeInsets.all(20.0),
                         child: Text(
-                          'If we found an account associated with this email address we’ll email a reset link to the email above.',
+                          'If we find an account associated with this email address we’ll email a reset link to the email above.',
                           style: TextStyles.forgetPasswordText,
                           textAlign: TextAlign.center,
                         ),
@@ -63,7 +63,8 @@ class ForgetPasswordScreen extends StatelessWidget {
                         child: Align(
                           alignment: Alignment.bottomCenter,
                           child: Padding(
-                            padding: const EdgeInsets.all(30.0),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 40.0, horizontal: 20),
                             child: Text(
                               'Tap here to get help with Sign in with Apple and Google sign in.',
                               style: TextStyles.forgetPasswordText,

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -14,7 +15,7 @@ class NotificationsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(107.0), // here the desired height
+          preferredSize: Size.fromHeight(70.0), // here the desired height
           child: back(context, HexColor("#F3F6FC"), Colors.black)
 
           // backgroundColor: Color(0xe1f5fe).withOpacity(1.0),
@@ -60,13 +61,7 @@ class NotificationsScreen extends StatelessWidget {
                 child: Text(
                     "Don’t miss out on important audition notifications like read receipts or adjustment requests from casting.",
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.inter(
-                      textStyle: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 16,
-                          fontFamily: "NetflixSans",
-                          color: HexColor("#121419")),
-                    )),
+                    style: TextStyles.inter16BlackPearlBold700),
               ),
               TextButton(
                 onPressed: () {},
@@ -75,7 +70,7 @@ class NotificationsScreen extends StatelessWidget {
                   style: Theme.of(context)
                       .textTheme
                       .headline5!
-                      .copyWith(fontSize: 14, fontWeight: FontWeight.w700),
+                      .copyWith(fontSize: 15, fontWeight: FontWeight.w700),
                 ),
               ),
               SizedBox(height: 5),
@@ -83,7 +78,10 @@ class NotificationsScreen extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: createColoredButton(context, "OK", MyColor.button, () {
                   // navTo(context, HomeLightEmptyScreen());
-                  showMyDialog(context, buildNAVDialogComp(context));
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) =>
+                          buildNAVDialogComp(context));
                 }),
               )
             ],
@@ -96,7 +94,7 @@ class NotificationsScreen extends StatelessWidget {
 
 createNavHead(String headTitle) {
   return Container(
-    padding: EdgeInsets.only(right: 30, left: 30, bottom: 24),
+    padding: EdgeInsets.only(bottom: 24),
     child: Column(
       //  mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -106,11 +104,7 @@ createNavHead(String headTitle) {
           child: Text(
             headTitle,
             textAlign: TextAlign.center,
-            style: GoogleFonts.inter(
-                textStyle: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 32,
-                    fontFamily: "NetflixSans")),
+            style: TextStyles.inter32NeroBold700,
           ),
         ),
       ],
@@ -119,61 +113,96 @@ createNavHead(String headTitle) {
 }
 
 buildNAVDialogComp(BuildContext context) {
-  return Container(
-      height: 195,
-      child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Column(
-              children: [
-                Text(
-                  "Are you sure you want to skip?",
-                  style: GoogleFonts.inter(
-                      textStyle:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 15)),
-                ),
-                SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.only(left: 30),
-                  child: Text(
-                    "We’ll only send you relevant, sometimes time sensitive notifications about your submissions.",
-                    style: GoogleFonts.inter(
-                        textStyle: TextStyle(
-                            fontWeight: FontWeight.w600, fontSize: 13)),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                TextButton(
-                    onPressed: () {
-                      navTo(context, HomeLightEmptyScreen());
-                    },
-                    child: Text(
-                      "Skip it",
-                      style: GoogleFonts.inter(
-                          textStyle: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 15,
-                              color: Colors.black)),
-                    )),
-                TextButton(
-                    onPressed: () {
-                      navTo(context, HomeLightEmptyScreen());
-                    },
-                    child: Text(
-                      "Turn Notifications ON",
-                      style: GoogleFonts.inter(
-                          textStyle: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 15,
-                              color: Colors.black)),
-                    ))
-              ],
-            )
-          ]));
+  return AlertDialog(
+    title: Text(
+      "Are you sure you want to skip?",
+      style: GoogleFonts.inter(
+        textStyle: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
+      ),
+      textAlign: TextAlign.left,
+    ),
+    content: Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Text(
+        "We’ll only send you relevant, sometimes time sensitive notifications about your submissions.",
+        style: GoogleFonts.inter(
+            textStyle: TextStyle(fontWeight: FontWeight.w600, fontSize: 15)),
+        textAlign: TextAlign.left,
+      ),
+    ),
+    actions: [
+      TextButton(
+        child: Text("Skip it", style: TextStyles.causten15BlackMedium600),
+        onPressed: () {
+          navTo(context, HomeLightEmptyScreen());
+        },
+      ),
+      TextButton(
+        child: Text("Turn Notifications ON",
+            style: TextStyles.causten15BlackMedium600),
+        onPressed: () {
+          navTo(context, HomeLightEmptyScreen());
+        },
+      )
+    ],
+  );
+
+  // Container(
+  //   height: 195,
+  //   width: 700,
+  //   child: Column(
+  //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //       crossAxisAlignment: CrossAxisAlignment.start,
+  //       children: [
+  //         Column(
+  //           children: [
+  //             Text(
+  //               "Are you sure you want to skip?",
+  //               style: GoogleFonts.inter(
+  //                   textStyle:
+  //                       TextStyle(fontWeight: FontWeight.w600, fontSize: 15)),
+  //             ),
+  //             SizedBox(height: 10),
+  //             Padding(
+  //               padding: const EdgeInsets.only(left: 12),
+  //               child: Text(
+  //                 "We’ll only send you relevant, sometimes time sensitive notifications about your submissions.",
+  //                 style: GoogleFonts.inter(
+  //                     textStyle: TextStyle(
+  //                         fontWeight: FontWeight.w600, fontSize: 15)),
+  //                 textAlign: TextAlign.left,
+  //               ),
+  //             ),
+  //           ],
+  //         ),
+  //         Row(
+  //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //           children: [
+  //             TextButton(
+  //                 onPressed: () {
+  //                   navTo(context, HomeLightEmptyScreen());
+  //                 },
+  //                 child: Text(
+  //                   "Skip it",
+  //                   style: GoogleFonts.inter(
+  //                       textStyle: TextStyle(
+  //                           fontWeight: FontWeight.w600,
+  //                           fontSize: 15,
+  //                           color: Colors.black)),
+  //                 )),
+  //             TextButton(
+  //                 onPressed: () {
+  //                   navTo(context, HomeLightEmptyScreen());
+  //                 },
+  //                 child: Text(
+  //                   "Turn Notifications ON",
+  //                   style: GoogleFonts.inter(
+  //                       textStyle: TextStyle(
+  //                           fontWeight: FontWeight.w600,
+  //                           fontSize: 15,
+  //                           color: Colors.black)),
+  //                 ))
+  //           ],
+  //         )
+  //       ]));
 }

@@ -22,23 +22,26 @@ class AgentInfoScreen extends StatelessWidget {
         builder: (context, state) {
           return Scaffold(
             appBar: PreferredSize(
-              preferredSize: Size.fromHeight(107.0), // here the desired height
+              preferredSize: Size.fromHeight(60.0), // here the desired height
               child: AppBar(
                   elevation: 0,
-                  leading: IconButton(onPressed: () => navBack(context),
-                      icon: Icon(Icons.keyboard_backspace,color: Colors.black,))),
+                  leading: IconButton(
+                      onPressed: () => navBack(context),
+                      icon: Icon(
+                        Icons.keyboard_backspace,
+                        color: Colors.black,
+                      ))),
 
               // backgroundColor: Color(0xe1f5fe).withOpacity(1.0),
             ),
             body: SingleChildScrollView(
               child: Container(
-                height: contextHeight(context)-140,
-                           padding: EdgeInsets.symmetric(horizontal: 10),
-
+                height: contextHeight(context) * .8,
+                padding: EdgeInsets.symmetric(horizontal: 10),
                 child: Column(
                   children: [
                     createAccHead("Agent Info",
-                        "Fill in as much as you can. You get to decide later if you want to include this info with your self tape."),
+                        "Fill in as much as you can. \nYou get to decide later if you want to include this info with your self tape."),
                     SizedBox(height: 7.6),
                     createTextField(
                       context,
@@ -71,21 +74,24 @@ class AgentInfoScreen extends StatelessWidget {
                       emailController,
                       TextInputType.emailAddress,
                     ),
-                    SizedBox(height: 37),
+                    SizedBox(height: 15),
                     TextButton(
                       onPressed: () {},
                       child: Text(
                         "Skip",
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline5!
-                            .copyWith(
-                                fontSize: 14, fontWeight: FontWeight.w700),
+                        style: Theme.of(context).textTheme.headline5!.copyWith(
+                            fontSize: 14, fontWeight: FontWeight.w700),
                       ),
                     ),
-                    SizedBox(height: 34),
-                    Padding(padding:EdgeInsets.symmetric(horizontal: 20) ,child: createColoredButton(context, "Next (3/3)", MyColor.button,
-                            () => navTo(context, CardReviewScreen())),)
+                    SizedBox(height: 15),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: createColoredButton(
+                          context,
+                          "Next (3/3)",
+                          MyColor.button,
+                          () => navTo(context, CardReviewScreen())),
+                    )
                   ],
                 ),
               ),

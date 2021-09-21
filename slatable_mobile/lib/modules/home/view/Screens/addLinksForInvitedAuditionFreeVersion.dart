@@ -5,6 +5,7 @@ import 'package:slatable_mobile/config/colors.dart';
 import 'package:slatable_mobile/modules/auth/view/components/component.dart';
 
 import 'package:slatable_mobile/modules/home/view/componant/homeCompnant.dart';
+import 'package:slatable_mobile/shared/ui/helper/export.dart';
 
 class AddLinksForInvitedAuditionFreeScreen extends StatelessWidget {
   const AddLinksForInvitedAuditionFreeScreen({Key? key}) : super(key: key);
@@ -13,12 +14,12 @@ class AddLinksForInvitedAuditionFreeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: createBodySetting([
-      buildHeadContainer(),
+      buildHeadContainer(context),
       Padding(
-        padding: const EdgeInsets.all(14),
+        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 25),
         child: Text(
-          "enter links for audition",
-          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600),
+          "enter links for audition".toUpperCase(),
+          style: TextStyles.inter11aluminumGreyMedium600,
           textAlign: TextAlign.start,
         ),
       ),
@@ -26,35 +27,87 @@ class AddLinksForInvitedAuditionFreeScreen extends StatelessWidget {
         color: Colors.white,
         child: Column(
           children: [
-            ListTile(
-              title: Text("Reel"),
-              subtitle: Text("Enter reel link"),
+            Container(
+              color: Colors.white,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+                child: ListTile(
+                  title: Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: Text(
+                      "Reel",
+                      style: TextStyles.inter15blackPearlMedium600,
+                    ),
+                  ),
+                  subtitle: Text("Enter reel link",
+                      style: TextStyles.inter15blackPearlRegular500WithOpacity),
+                ),
+              ),
             ),
             Divider(),
-            ListTile(
-              title: Text("Resume"),
-              subtitle: Text("Enter resume link"),
+            Container(
+              color: Colors.white,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+                child: ListTile(
+                  title: Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: Text(
+                      "Resume",
+                      style: TextStyles.inter15blackPearlMedium600,
+                    ),
+                  ),
+                  subtitle: Text("Enter resume link",
+                      style: TextStyles.inter15blackPearlRegular500WithOpacity),
+                ),
+              ),
             ),
             Divider(),
-            ListTile(
-              title: Text("Website"),
-              subtitle: Text("Enter website link"),
+            Container(
+              color: Colors.white,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+                child: ListTile(
+                  title: Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: Text(
+                      "Website",
+                      style: TextStyles.inter15blackPearlMedium600,
+                    ),
+                  ),
+                  subtitle: Text("Enter website link",
+                      style: TextStyles.inter15blackPearlRegular500WithOpacity),
+                ),
+              ),
             ),
           ],
         ),
       ),
-      SizedBox(height: 170),
-      createColoredButton(context, "Save Links", HexColor("#DEF0D8"), () {})
+      SizedBox(height: 100),
+      Padding(
+          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+          child: createColoredButton(
+              context, "Save Links", HexColor("#DEF0D8"), () {}))
     ], MainAxisAlignment.start));
   }
 
-  Container buildHeadContainer() {
+  Container buildHeadContainer(context) {
     return Container(
-      padding: EdgeInsets.only(top: 24, right: 30, left: 30, bottom: 50),
+      padding: EdgeInsets.only(top: 24, right: 30, left: 30, bottom: 60),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Icon(
+                Icons.keyboard_backspace,
+              )),
           Text(
             "Add Links",
             style: TextStyle(fontSize: 32, fontWeight: FontWeight.w600),

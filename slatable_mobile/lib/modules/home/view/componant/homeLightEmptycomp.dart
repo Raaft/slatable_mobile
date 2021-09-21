@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:slatable_mobile/config/colors.dart';
 import 'package:slatable_mobile/modules/auth/view/components/component.dart';
 import 'package:slatable_mobile/modules/home/view/Screens/homeLightPopulatedScreen.dart';
-import 'package:slatable_mobile/modules/home/view/Screens/scenesFreeSlatableScreen.dart';
 import 'package:slatable_mobile/modules/home/view/Screens/settingsScreen.dart';
+import 'package:slatable_mobile/shared/ui/components/custom_container.dart';
+import 'package:slatable_mobile/shared/ui/helper/palette.dart';
 
 Widget buildHead(context) {
   return Container(
@@ -19,20 +19,65 @@ Widget buildHead(context) {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              "Welcome, \n David",
-              style: GoogleFonts.inter(textStyle: TextStyle(fontSize: 30, fontWeight: FontWeight.w600))
+            RichText(
+              textAlign: TextAlign.left,
+              text: TextSpan(
+                children: <TextSpan>[
+                  TextSpan(
+                    text: 'Welcome,',
+                    style: TextStyle(
+                        color: Palette.black,
+                        fontSize: 30,
+                        fontWeight: FontWeight.w400),
+                  ),
+                  TextSpan(text: '\n'),
+                  TextSpan(
+                    text: 'David',
+                    style: TextStyle(
+                        color: Palette.black,
+                        fontSize: 30,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ],
+              ),
             ),
-            Text("Your Auditions",
-                style: GoogleFonts.inter(textStyle:  TextStyle(fontSize: 15, fontWeight: FontWeight.w500))),
-
+            RichText(
+              textAlign: TextAlign.left,
+              text: TextSpan(
+                children: <TextSpan>[
+                  TextSpan(
+                    text: 'Your ',
+                    style: TextStyle(
+                        color: Palette.black,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500),
+                  ),
+                  TextSpan(
+                    text: 'Auditions',
+                    style: TextStyle(
+                        color: Palette.black,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
-        IconButton(
-            onPressed: () {
-              navTo(context, SettingsScreen());
-            },
-            icon: Image.asset("assets/icons/slider.png"))
+        CustomContainer(
+          width: 48,
+          height: 48,
+          hasBorder: true,
+          radius: 16,
+          child: IconButton(
+              onPressed: () {
+                navTo(context, SettingsScreen());
+              },
+              icon: Image.asset(
+                "assets/icons/slider.png",
+                scale: 4,
+              )),
+        ),
       ],
     ),
     height: 205,
@@ -74,14 +119,35 @@ Widget buildBody() {
           scale: 4,
         ),
         SizedBox(height: 30),
-        Text(
-            " Hmm... Looks like you don’t have any auditions yet. You can create your first audition below. Break a leg! ",
-            textAlign: TextAlign.center,
-            style: GoogleFonts.inter(
-                textStyle: TextStyle(
+        RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            children: <TextSpan>[
+              TextSpan(
+                text:
+                    'Hmm... Looks like you don’t have any auditions yet. You can create your first audition ',
+                style: TextStyle(
+                    color: Palette.shuttleGrey.withOpacity(.9),
                     fontSize: 16,
-                    color: HexColor("#60646D"),
-                    fontWeight: FontWeight.w400))),
+                    fontWeight: FontWeight.w400),
+              ),
+              TextSpan(
+                text: 'below.',
+                style: TextStyle(
+                    color: Palette.shuttleGrey.withOpacity(.9),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700),
+              ),
+              TextSpan(
+                text: ' Break a leg!',
+                style: TextStyle(
+                    color: Palette.shuttleGrey.withOpacity(.9),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400),
+              ),
+            ],
+          ),
+        ),
       ],
     ),
   );
